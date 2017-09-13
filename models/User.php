@@ -6,6 +6,7 @@ use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
+use app\models\User_Company;
 
 /**
  * User model
@@ -241,6 +242,15 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUserCompanies()
+    {
+        return $this->hasMany(User_Company::className(), ['user_id' => 'id']);
+    }
+
 	
 	
 }
