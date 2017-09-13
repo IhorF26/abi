@@ -6,11 +6,13 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Company;
+use app\models\User;
+use app\models\User_Company;
 
 /**
- * CompanyntSearch represents the model behind the search form about `app\models\Company`.
+ * CompanySearch represents the model behind the search form about `app\models\Company`.
  */
-class CompanyntSearch extends Company
+class CompanySearch extends Company
 {
     /**
      * @inheritdoc
@@ -41,7 +43,13 @@ class CompanyntSearch extends Company
      */
     public function search($params)
     {
-        $query = Company::find();
+	    $user_id = Yii::$app->user->id;   //or getId();
+		$subQuery = (new \yii\db\Query())->select('company_id')->from('user_company')->where(['user_id' => $user_id]);
+    	$query = Company::find()->where(['in', 'id', $subQuery]);
+
+//	      $query = Company::find()->where(['and',['field' => $value],['in', 'user_id', $subQuery]])->all();
+//	      die (print_r($query));
+//        $query = Company::find();
 
         // add conditions that should always apply here
 

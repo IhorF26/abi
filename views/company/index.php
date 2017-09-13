@@ -2,12 +2,12 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use yii\widgets\Pjax;
+
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\CompanyntSearch */
+/* @var $searchModel app\models\CompanySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Companies';
+$this->title = 'My Companies';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="company-index">
@@ -18,13 +18,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Company', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-<?php Pjax::begin(); ?>    <?= GridView::widget([
+    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            // 'id',
             'name',
             'nip',
             'reg',
@@ -34,4 +34,4 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-<?php Pjax::end(); ?></div>
+</div>

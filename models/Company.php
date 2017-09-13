@@ -15,6 +15,7 @@ use Yii;
  * @property integer $department
  *
  * @property Department[] $departments
+ * @property UserCompany[] $userCompanies
  * @property Worker[] $workers
  */
 class Company extends \yii\db\ActiveRecord
@@ -66,8 +67,25 @@ class Company extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getUserCompanies()
+    {
+        return $this->hasMany(User_Company::className(), ['company_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getWorkers()
     {
         return $this->hasMany(Worker::className(), ['company_id' => 'id']);
+    }
+
+    /**
+     * @inheritdoc
+     * @return CompanyQuery the active query used by this AR class.
+     */
+    public static function find()
+    {
+        return new CompanyQuery(get_called_class());
     }
 }

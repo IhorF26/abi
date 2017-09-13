@@ -4,10 +4,13 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Company;
-use app\models\CompanyntSearch;
+use app\models\CompanySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\HttpException;
 use yii\filters\VerbFilter;
+use app\models\User_Company;
+use app\models\User;
 
 /**
  * CompanyController implements the CRUD actions for Company model.
@@ -35,7 +38,7 @@ class CompanyController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new CompanyntSearch();
+        $searchModel = new CompanySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -63,10 +66,18 @@ class CompanyController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Company();
-
+	    $user_id = Yii::$app->user->id;
+		
+		$model = new Company();
+		$model_usercompany = new User_Company();
+		
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+			$model_usercompany->user_id = $user_id;
+			$model_usercompany->company_id = $model->id;
+			if ($model_usercompany->save())
             return $this->redirect(['view', 'id' => $model->id]);
+			else 
+			throw new HttpException(404 ,'Cannot save relative record');
         } else {
             return $this->render('create', [
                 'model' => $model,
