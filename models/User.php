@@ -6,7 +6,9 @@ use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
+use yii\helpers\ArrayHelper;
 use app\models\User_Company;
+use app\models\Company;
 
 /**
  * User model
@@ -251,6 +253,11 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->hasMany(User_Company::className(), ['user_id' => 'id']);
     }
 
-	
-	
+	public static function getCompaniesList($user_id)
+    {
+	$subQuery = (new \yii\db\Query())->select('company_id')->from('user_company')->where(['user_id' => $user_id]);
+    $droptions = Company::find()->where(['in', 'id', $subQuery])->all();
+//    $droptions = Municipality::find()->asArray()->all();
+    return Arrayhelper::map($droptions, 'id', 'name');
+    }	
 }

@@ -48,9 +48,14 @@ AppAsset::register($this);
            NavBar::end();
     } else {
 		    $user_id = Yii::$app->user->getId();
-            $user = User::findOne($user_id);
+			$companyname = 'No Company';
+			if (Yii::$app->session->get('company')) {
+			$companyname = \app\models\User_Company::find()->where(['and',['user_id' => $user_id],['company_id' => Yii::$app->session->get('company')]])->one()->company->name;				
+			}
+
+			
             NavBar::begin([
-                'brandLabel' => 'Asystent ABI',
+                'brandLabel' => 'Asystent ABI -> '.Html::encode($companyname),
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
@@ -72,10 +77,16 @@ AppAsset::register($this);
                     )
                     . Html::endForm()
                     . '</li>';
+			
+//			$menuItems[] = '<li>'
+//			. Yii::$app->session->get('company') !== null ?  Html::encode(Yii::$app->session->get('company')) : 'no company'
+//			.'</li>';
+					
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => $menuItems,
             ]);
+			
             NavBar::end();
 			}
     ?>

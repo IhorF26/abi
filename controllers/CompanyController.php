@@ -74,8 +74,10 @@ class CompanyController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 			$model_usercompany->user_id = $user_id;
 			$model_usercompany->company_id = $model->id;
-			if ($model_usercompany->save())
+			if ($model_usercompany->save()){
+			Yii::$app->session->set('company', $model->id);
             return $this->redirect(['view', 'id' => $model->id]);
+			}
 			else 
 			throw new HttpException(404 ,'Cannot save relative record');
         } else {
@@ -113,7 +115,13 @@ class CompanyController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
+	
+		Yii::$app->session->remove('company');		
+		$user_id = Yii::$app->user->id;
+		$firstcompany = (new \yii\db\Query())->select('company_id')->from('user_company')->where(['user_id' => $user_id])->one();
+		if ($actualcompany = $firstcompany['company_id']){
+			Yii::$app->session->set('company', $actualcompany);
+		}
         return $this->redirect(['index']);
     }
 

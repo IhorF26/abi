@@ -88,4 +88,5 @@ class Company extends \yii\db\ActiveRecord
     {
         return new CompanyQuery(get_called_class());
     }
+
 }
