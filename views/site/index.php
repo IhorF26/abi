@@ -2,15 +2,37 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
+
+$this->title = 'ABI Asystent';
 ?>
 <div class="site-index">
 
-    <div class="jumbotron">
+        <div class="row">
+            <div class="col-lg-4">
+       	 <?php if (Yii::$app->session->get('company')): ?>
+		<?php $form = ActiveForm::begin(['id' => 'set_company', 'action' => '']);
+		$mycompanies = $user->getCompaniesList($user->id);
+        echo '<h4> My Companies</h4>';
+		// $form->field($profile, 'party_id')->dropDownList($profile->PartyList,['prompt' => Yii::t('template/labels','Please Choose Party')]);
+		echo Html::dropDownList('company_id', 'null', $mycompanies, $options = ['id' => 'selectcompany','options' => [Yii::$app->session->get('company') => ['Selected'=>'selected']]]);			
+		echo Html::submitButton('Change Company', ['id' => 'go_company', 'class' => 'btn btn-success btn-sm']);
+        ActiveForm::end(); ?>
+		<?php else: ?>	
+		<p>
+        <?= Html::a('Create Company', ['company/create'], ['class' => 'btn btn-success']) ?>
+		</p>
+		<?php endif; ?>		
+            </div>
+
+
+      <div class="jumbotron">
         <h1>Asystent ABI</h1>
 
-    </div>
-
+       </div>
+	</div>
+	
     <div class="body-content">
 
         <div class="row">

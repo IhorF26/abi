@@ -77,7 +77,13 @@ class SiteController extends Controller
         if (Yii::$app->user->isGuest) {
             return $this->redirect('/site/login', 302);
         }
-        return $this->render('index');
+		
+		if ($actualcompany = Yii::$app->request->post('company_id'))
+			Yii::$app->session->set('company', $actualcompany);
+			
+		$user_id = Yii::$app->user->id;
+		$user = User::findOne($user_id);
+		return $this->render('index', ['user' => $user]);
     }
 
     /**
@@ -93,7 +99,18 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+
+		$user_id = Yii::$app->user->id;
+//		$user = User::findOne($user_id);
+		$firstcompany = (new \yii\db\Query())->select('company_id')->from('user_company')->where(['user_id' => $user_id])->one();		
+
+		if ($actualcompany = $firstcompany['company_id']) {
+		 if (!Yii::$app->session->get('company')){
+			Yii::$app->session->set('company', $actualcompany);
+	  	 }
+		}
+
+		return $this->goBack();
         }
         return $this->render('login', [
             'model' => $model,
