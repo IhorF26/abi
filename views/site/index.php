@@ -38,7 +38,7 @@ $this->title = 'ABI Asystent';
 	
     <div class="body-content">
 
-           <div class="col-lg-3">
+           <div class="col-lg-4">
                 <hr>
                 <h2>Bezpieczeństwo</h2>
 
@@ -47,7 +47,7 @@ $this->title = 'ABI Asystent';
 			<div class="unit-left"><img src="../images/pechat1.jpg" alt="" style="margin-top: 10px;" class="img-responsive img-circle"></div>
 			
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-4">
                 <hr>
                 <h2>Zamówienie</h2>
 
@@ -55,7 +55,7 @@ $this->title = 'ABI Asystent';
 
 			<div class="unit-left"><img src="../images/documents.jpg" alt="" style="margin-top: 10px;" class="img-responsive img-circle"></div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-4">
                 <hr>
                 <h2>Prawo</h2>
 
