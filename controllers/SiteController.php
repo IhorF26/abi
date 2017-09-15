@@ -156,8 +156,15 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
-	
-	    /**
+
+    public function actionCatalogues()
+    {
+        return $this->render('catalogues');
+    }
+
+
+
+    /**
      * Signs user up.
      *
      * @return mixed
