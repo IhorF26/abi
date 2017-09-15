@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Department;
 use Yii;
 use app\models\Cabinet;
 use app\models\CabinetSearch;
@@ -65,7 +66,10 @@ class CabinetController extends Controller
     {
         $model = new Cabinet();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+//            $model->company_id=Yii::$app->request->post()
+            $model->company_id=Yii::$app->session->get('company');
+        if ($model->save())
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [

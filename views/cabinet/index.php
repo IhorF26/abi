@@ -24,10 +24,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'department_id',
             'cabinet_name',
-            'company_id',
+            [
+                'class' => 'yii\grid\DataColumn',
+                'attribute' => 'department_id',
+                'filter' => true,
+                'format' => 'raw',
+                'label' => 'Department',
+                'value' => function ($model) {
+                    return  $model->department->department_name;
+                },
+            ],
+//            'company_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

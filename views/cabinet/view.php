@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Cabinet */
 
-$this->title = $model->id;
+$this->title = $model->cabinet_name;
 $this->params['breadcrumbs'][] = ['label' => 'Cabinets', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -28,10 +28,19 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'department_id',
+   //         'id',
+            [
+                'attribute' => 'department',
+                'format'=>'raw',
+                'value' => $model->department->department_name !== null ? Html::encode($model->department->department_name) : 'no data'
+            ],
+
             'cabinet_name',
-            'company_id',
+            [
+                'attribute' => 'company',
+                'format'=>'raw',
+                'value' => $model->department->company->name !== null ? Html::encode($model->department->company->name) : 'no data'
+            ],
         ],
     ]) ?>
 
