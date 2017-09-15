@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+           // ['class' => 'yii\grid\SerialColumn'],
 
             'cabinet_name',
             [
@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return  $model->department->department_name;
                 },
             ],
-//            'company_id',
+           // 'company_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

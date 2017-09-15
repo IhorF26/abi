@@ -63,11 +63,13 @@ class CabinetSearch extends Cabinet
             'id' => $this->id,
             'department_id' => $this->department_id,
             'company_id' => Yii::$app->session->get('company'),
+
 //            'department' => $this->department->department_name,
 //            'company' => $this->company->name,
         ]);
 
         $query->andFilterWhere(['like', 'cabinet_name', $this->cabinet_name]);
+        $query = $query->orderBy('id DESC');
 
         return $dataProvider;
     }

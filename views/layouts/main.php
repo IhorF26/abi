@@ -48,26 +48,23 @@ AppAsset::register($this);
            NavBar::end();
     } else {
 		    $user_id = Yii::$app->user->getId();
-			$companyname = 'No Company';
+			$companyname = 'Brak firmy';
 			if (Yii::$app->session->get('company')) {
 			$companyname = \app\models\User_Company::find()->where(['and',['user_id' => $user_id],['company_id' => Yii::$app->session->get('company')]])->one()->company->name;				
 			}
 
 			
             NavBar::begin([
-                'brandLabel' => 'Asystent ABI -> '.Html::encode($companyname),
+                'brandLabel' => 'Asystent ABI ("'.Html::encode($companyname).'")',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
                 ],
             ]);
             $menuItems = [
-                ['label' => 'Home', 'url' => ['/site/index']],
-                ['label' => 'Catalogues', 'url' => ['/site/catalogues']],
-                ['label' => 'Firmy', 'url' => ['/company/index']],
-                ['label' => 'Dział', 'url' => ['/department/index']],
-                ['label' => 'About', 'url' => ['/site/about']],
-                ['label' => 'Contact', 'url' => ['/site/contact']],
+                ['label' => 'Ustawienia', 'url' => ['/site/catalogues']],
+                ['label' => 'O nas', 'url' => ['/site/about']],
+                ['label' => 'Kontakt', 'url' => ['/site/contact']],
 
             ];
 			
