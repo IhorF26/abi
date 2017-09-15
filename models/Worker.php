@@ -8,16 +8,25 @@ use Yii;
  * This is the model class for table "worker".
  *
  * @property integer $id
+ * @property integer $konfigurator_id
  * @property integer $num_kadrow
  * @property string $name
+ * @property string $name2
  * @property string $surname
+ * @property string $date_birthday
+ * @property string $email
+ * @property integer $PESEL
+ * @property integer $NIP
+ * @property string $phone_number
+ * @property string $street
+ * @property string $house_number
+ * @property string $flat_number
+ * @property string $zip_code
+ * @property string $region
  * @property string $position
  * @property integer $typ_contract
- * @property integer $id_profil
  * @property integer $company_id
- * @property integer $cabinet_id
  *
- * @property Cabinet $cabinet
  * @property Company $company
  */
 class Worker extends \yii\db\ActiveRecord
@@ -36,11 +45,12 @@ class Worker extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['num_kadrow', 'name', 'surname', 'typ_contract', 'id_profil', 'company_id', 'cabinet_id'], 'required'],
-            [['num_kadrow', 'typ_contract', 'id_profil', 'company_id', 'cabinet_id'], 'integer'],
-            [['name', 'surname'], 'string', 'max' => 32],
-            [['position'], 'string', 'max' => 50],
-            [['cabinet_id'], 'exist', 'skipOnError' => true, 'targetClass' => Cabinet::className(), 'targetAttribute' => ['cabinet_id' => 'id']],
+            [['konfigurator_id', 'num_kadrow', 'PESEL', 'NIP', 'typ_contract', 'company_id'], 'integer'],
+            [['num_kadrow', 'name', 'surname', 'typ_contract', 'company_id'], 'required'],
+            [['name', 'name2', 'surname'], 'string', 'max' => 32],
+            [['date_birthday', 'email', 'street', 'region', 'position'], 'string', 'max' => 50],
+            [['phone_number'], 'string', 'max' => 25],
+            [['house_number', 'flat_number', 'zip_code'], 'string', 'max' => 10],
             [['company_id'], 'exist', 'skipOnError' => true, 'targetClass' => Company::className(), 'targetAttribute' => ['company_id' => 'id']],
         ];
     }
@@ -52,23 +62,25 @@ class Worker extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'konfigurator_id' => 'Konfigurator ID',
             'num_kadrow' => 'Num Kadrow',
             'name' => 'Name',
+            'name2' => 'Name2',
             'surname' => 'Surname',
+            'date_birthday' => 'Date Birthday',
+            'email' => 'Email',
+            'PESEL' => 'Pesel',
+            'NIP' => 'Nip',
+            'phone_number' => 'Phone Number',
+            'street' => 'Street',
+            'house_number' => 'House Number',
+            'flat_number' => 'Flat Number',
+            'zip_code' => 'Zip Code',
+            'region' => 'Region',
             'position' => 'Position',
             'typ_contract' => 'Typ Contract',
-            'id_profil' => 'Id Profil',
             'company_id' => 'Company ID',
-            'cabinet_id' => 'Cabinet ID',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCabinet()
-    {
-        return $this->hasOne(Cabinet::className(), ['id' => 'cabinet_id']);
     }
 
     /**

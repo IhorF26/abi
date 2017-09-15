@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Department;
-use app\models\DepartmentSearch;
+use app\models\Program;
+use app\models\ProgramSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * DepartmentController implements the CRUD actions for Department model.
+ * ProgramController implements the CRUD actions for Program model.
  */
-class DepartmentController extends Controller
+class ProgramController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class DepartmentController extends Controller
     }
 
     /**
-     * Lists all Department models.
+     * Lists all Program models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new DepartmentSearch();
+        $searchModel = new ProgramSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class DepartmentController extends Controller
     }
 
     /**
-     * Displays a single Department model.
+     * Displays a single Program model.
      * @param integer $id
      * @return mixed
      */
@@ -57,13 +57,13 @@ class DepartmentController extends Controller
     }
 
     /**
-     * Creates a new Department model.
+     * Creates a new Program model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Department();
+        $model = new Program();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
@@ -75,7 +75,7 @@ class DepartmentController extends Controller
     }
 
     /**
-     * Updates an existing Department model.
+     * Updates an existing Program model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -94,7 +94,7 @@ class DepartmentController extends Controller
     }
 
     /**
-     * Deletes an existing Department model.
+     * Deletes an existing Program model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -107,15 +107,15 @@ class DepartmentController extends Controller
     }
 
     /**
-     * Finds the Department model based on its primary key value.
+     * Finds the Program model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Department the loaded model
+     * @return Program the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Department::findOne($id)) !== null) {
+        if (($model = Program::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -4,28 +4,34 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\DepartmentSearch */
+/* @var $searchModel app\models\ProgramSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Lista działów';
+$this->title = 'Programs';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="department-index">
+<div class="program-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Utworzyć dział', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Program', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        //'filterModel' => $searchModel,
         'columns' => [
-          //['class' => 'yii\grid\SerialColumn'],
-            'id',
-            //'company_id',
-            'department_name',
+            ['class' => 'yii\grid\SerialColumn'],
+
+             //'id',
+            'name',
+            'description',
+            'department_id',
+            [
+                'attribute'=>'company_id',
+                'filter'=>array("1"=>"open","2"=>"in progress","3"=>"closed")
+            ],
+          //  'company_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
