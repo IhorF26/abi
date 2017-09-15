@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Program;
-use app\models\ProgramSearch;
+use app\models\EquipmentProgram;
+use app\models\EquipmentProgramSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ProgramController implements the CRUD actions for Program model.
+ * EquipmentProgramController implements the CRUD actions for EquipmentProgram model.
  */
-class ProgramController extends Controller
+class EquipmentProgramController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class ProgramController extends Controller
     }
 
     /**
-     * Lists all Program models.
+     * Lists all EquipmentProgram models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ProgramSearch();
+        $searchModel = new EquipmentProgramSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class ProgramController extends Controller
     }
 
     /**
-     * Displays a single Program model.
+     * Displays a single EquipmentProgram model.
      * @param integer $id
      * @return mixed
      */
@@ -57,13 +57,13 @@ class ProgramController extends Controller
     }
 
     /**
-     * Creates a new Program model.
+     * Creates a new EquipmentProgram model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Program();
+        $model = new EquipmentProgram();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -75,7 +75,7 @@ class ProgramController extends Controller
     }
 
     /**
-     * Updates an existing Program model.
+     * Updates an existing EquipmentProgram model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -94,7 +94,7 @@ class ProgramController extends Controller
     }
 
     /**
-     * Deletes an existing Program model.
+     * Deletes an existing EquipmentProgram model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -107,15 +107,15 @@ class ProgramController extends Controller
     }
 
     /**
-     * Finds the Program model based on its primary key value.
+     * Finds the EquipmentProgram model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Program the loaded model
+     * @return EquipmentProgram the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Program::findOne($id)) !== null) {
+        if (($model = EquipmentProgram::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

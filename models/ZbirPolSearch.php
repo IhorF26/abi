@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Cabinet;
+use app\models\ZbirPol;
 
 /**
- * CabinetSearch represents the model behind the search form about `app\models\Cabinet`.
+ * ZbirPolSearch represents the model behind the search form about `app\models\ZbirPol`.
  */
-class CabinetSearch extends Cabinet
+class ZbirPolSearch extends ZbirPol
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class CabinetSearch extends Cabinet
     public function rules()
     {
         return [
-            [['id', 'department_id', 'company_id'], 'integer'],
-            [['cabinet_name'], 'safe'],
+            [['id', 'status', 'zbir_id', 'company_id'], 'integer'],
+            [['name', 'description'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class CabinetSearch extends Cabinet
      */
     public function search($params)
     {
-        $query = Cabinet::find();
+        $query = ZbirPol::find();
 
         // add conditions that should always apply here
 
@@ -60,11 +60,13 @@ class CabinetSearch extends Cabinet
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'department_id' => $this->department_id,
+            'status' => $this->status,
+            'zbir_id' => $this->zbir_id,
             'company_id' => $this->company_id,
         ]);
 
-        $query->andFilterWhere(['like', 'cabinet_name', $this->cabinet_name]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
     }

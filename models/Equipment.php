@@ -5,26 +5,27 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "cabinet".
+ * This is the model class for table "equipment".
  *
  * @property integer $id
- * @property integer $department_id
- * @property string $cabinet_name
+ * @property integer $cabinet_id
+ * @property string $name
+ * @property string $description
  * @property integer $company_id
  *
- * @property Department $department
+ * @property Cabinet $cabinet
  * @property Company $company
- * @property Equipment[] $equipments
+ * @property EquipmentProgram[] $equipmentPrograms
  * @property Konfigurator[] $konfigurators
  */
-class Cabinet extends \yii\db\ActiveRecord
+class Equipment extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'cabinet';
+        return 'equipment';
     }
 
     /**
@@ -33,10 +34,10 @@ class Cabinet extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['department_id'], 'required'],
-            [['department_id', 'company_id'], 'integer'],
-            [['cabinet_name'], 'string', 'max' => 255],
-            [['department_id'], 'exist', 'skipOnError' => true, 'targetClass' => Department::className(), 'targetAttribute' => ['department_id' => 'id']],
+            [['cabinet_id', 'name', 'company_id'], 'required'],
+            [['cabinet_id', 'company_id'], 'integer'],
+            [['name', 'description'], 'string', 'max' => 50],
+            [['cabinet_id'], 'exist', 'skipOnError' => true, 'targetClass' => Cabinet::className(), 'targetAttribute' => ['cabinet_id' => 'id']],
             [['company_id'], 'exist', 'skipOnError' => true, 'targetClass' => Company::className(), 'targetAttribute' => ['company_id' => 'id']],
         ];
     }
@@ -48,8 +49,9 @@ class Cabinet extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'department_id' => 'Department ID',
-            'cabinet_name' => 'Cabinet Name',
+            'cabinet_id' => 'Cabinet ID',
+            'name' => 'Name',
+            'description' => 'Description',
             'company_id' => 'Company ID',
         ];
     }
@@ -57,9 +59,9 @@ class Cabinet extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getDepartment()
+    public function getCabinet()
     {
-        return $this->hasOne(Department::className(), ['id' => 'department_id']);
+        return $this->hasOne(Cabinet::className(), ['id' => 'cabinet_id']);
     }
 
     /**
@@ -73,9 +75,9 @@ class Cabinet extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getEquipments()
+    public function getEquipmentPrograms()
     {
-        return $this->hasMany(Equipment::className(), ['cabinet_id' => 'id']);
+        return $this->hasMany(EquipmentProgram::className(), ['equipment_id' => 'id']);
     }
 
     /**
@@ -83,6 +85,6 @@ class Cabinet extends \yii\db\ActiveRecord
      */
     public function getKonfigurators()
     {
-        return $this->hasMany(Konfigurator::className(), ['cabinet_id' => 'id']);
+        return $this->hasMany(Konfigurator::className(), ['equipment_id' => 'id']);
     }
 }

@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Cabinet;
+use app\models\EquipmentProgram;
 
 /**
- * CabinetSearch represents the model behind the search form about `app\models\Cabinet`.
+ * EquipmentProgramSearch represents the model behind the search form about `app\models\EquipmentProgram`.
  */
-class CabinetSearch extends Cabinet
+class EquipmentProgramSearch extends EquipmentProgram
 {
     /**
      * @inheritdoc
@@ -18,8 +18,7 @@ class CabinetSearch extends Cabinet
     public function rules()
     {
         return [
-            [['id', 'department_id', 'company_id'], 'integer'],
-            [['cabinet_name'], 'safe'],
+            [['id', 'equipment_id', 'program_id', 'company_id'], 'integer'],
         ];
     }
 
@@ -41,7 +40,7 @@ class CabinetSearch extends Cabinet
      */
     public function search($params)
     {
-        $query = Cabinet::find();
+        $query = EquipmentProgram::find();
 
         // add conditions that should always apply here
 
@@ -60,11 +59,10 @@ class CabinetSearch extends Cabinet
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'department_id' => $this->department_id,
+            'equipment_id' => $this->equipment_id,
+            'program_id' => $this->program_id,
             'company_id' => $this->company_id,
         ]);
-
-        $query->andFilterWhere(['like', 'cabinet_name', $this->cabinet_name]);
 
         return $dataProvider;
     }
