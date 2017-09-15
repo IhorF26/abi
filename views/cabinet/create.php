@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Cabinet */
 
-$this->title = 'Create Cabinet';
-$this->params['breadcrumbs'][] = ['label' => 'Cabinets', 'url' => ['index']];
+$this->title = 'Utworzyć pomieszczenia';
+$this->params['breadcrumbs'][] = ['label' => 'Nazwa pomieszczenia', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cabinet-create">

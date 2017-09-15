@@ -48,10 +48,10 @@ class Cabinet extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'department_id' => 'Department ID',
-            'cabinet_name' => 'Cabinet Name',
-            'company_id' => 'Company ID',
+            'id' => 'L.p.',
+            'department' => 'Nazwa działu',
+            'cabinet_name' => 'Nazwa pomieszczenia',
+            'company' => 'Nazwa firmy',
         ];
     }
 

@@ -127,6 +127,9 @@ AppAsset::register($this);
                         <a href="/cabinet/index" class="button" style="font-size:20px">Pomieszczenia  <i class="fa fa-key" style="font-size:24px;color:cornflowerblue"></i></a>
                     </li><br/>
                     <li>
+                        <a href="/zbirPol/index" class="button" style="font-size:20px"> Pola zbiory  <i class="fa fa-sitemap" style="font-size:24px;color:cornflowerblue"></i></a>
+                    </li><br/>
+                    <li>
                        <a href="/equipment/index" class="button" style="font-size:20px"> Komputer <i class="fa fa-desktop" style="font-size:24px;color:cornflowerblue"></i></a>
                     </li><br/>
                     <li>
