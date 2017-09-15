@@ -62,7 +62,6 @@ AppAsset::register($this);
                 ],
             ]);
             $menuItems = [
-                ['label' => 'Ustawienia', 'url' => ['/site/catalogues']],
                 ['label' => 'O nas', 'url' => ['/site/about']],
                 ['label' => 'Kontakt', 'url' => ['/site/contact']],
 
@@ -104,7 +103,6 @@ AppAsset::register($this);
                 <ul  style="list-style-type: none;">
                     <h4><i class="fa fa-file" style="font-size:24px;"></i> Dokumentacja ABI</h4>
                     <br/>
-                    <br/>
                     <li>
                         <a href="" class="button" style="font-size:20px">Konfigurator  <i class="fa fa-cogs" style="font-size:24px;color:#c5571e"></i></a>
                     </li><br/>
@@ -120,9 +118,22 @@ AppAsset::register($this);
 
                     <br/>
 
+                    <h4><i class="fa fa fa-wrench" style="font-size:24px; color: black"></i> Ustawienia</h4>
+                    <br/>
                     <li>
-                        <a href="/site/catalogues" class="button" style="font-size:20px; color: limegreen"><i class="fa fa fa-wrench" style="font-size:24px;color:green"></i> Ustawienia </a>
+                        <a href="/company/index" class="button" style="font-size:20px"> Firmy <i class="fa fa-group" style="font-size:24px;color:cornflowerblue"></i></a>
                     </li><br/>
+                    <li>
+                        <a href="/cabinet/index" class="button" style="font-size:20px">Pomieszczenia  <i class="fa fa-key" style="font-size:24px;color:cornflowerblue"></i></a>
+                    </li><br/>
+                    <li>
+                       <a href="/equipment/index" class="button" style="font-size:20px"> Komputer <i class="fa fa-desktop" style="font-size:24px;color:cornflowerblue"></i></a>
+                    </li><br/>
+                    <li>
+                        <a href="/program/index" class="button" style="font-size:20px;"> Programów  <i class="fa fa-cloud" style="font-size:24px;color:cornflowerblue"></i></a>
+                    </li><br/>
+                    </ul>
+
                 </ul>
             </div>
               <div class="col-lg-9">
@@ -131,6 +142,7 @@ AppAsset::register($this);
     </div>
 </div>
 
+</div>
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; Asystent ABI <?= date('Y') ?></p>

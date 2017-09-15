@@ -10,7 +10,7 @@ $this->title = 'ABI Asystent';
 <div class="site-index">
 
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-6">
        	 <?php if (Yii::$app->session->get('company')): ?>
 		<?php $form = ActiveForm::begin(['id' => 'set_company', 'action' => '']);
 		$mycompanies = $user->getCompaniesList($user->id);
@@ -18,7 +18,7 @@ $this->title = 'ABI Asystent';
 		// $form->field($profile, 'party_id')->dropDownList($profile->PartyList,['prompt' => Yii::t('template/labels','Please Choose Party')]);
 		echo Html::dropDownList('company_id', 'null', $mycompanies, $options = ['id' => 'selectcompany',
             'options' => [Yii::$app->session->get('company') => ['Selected'=>'selected']], 'class' => "btn btn-primary dropdown-toggle", 'type'=>"button", 'data-toggle'=>"dropdown"]);
-		echo '&nbsp;&nbsp;&nbsp';
+        echo '&nbsp;&nbsp;&nbsp';
 		echo Html::submitButton('Zmienić firmę', ['id' => 'go_company', 'class' => 'btn btn-success btn-sm']);
         ActiveForm::end(); ?>
 		<?php else: ?>	
@@ -26,16 +26,14 @@ $this->title = 'ABI Asystent';
         <?= Html::a('Utwórz firmę', ['company/create'], ['class' => 'btn btn-success']) ?>
 		</p>
 		<?php endif; ?>
-         <hr>
+        <hr>
             </div>
 
-
-      <div class="jumbotron">
+	    </div>
+    <div class="jumbotron">
         <h1>Asystent ABI</h1>
+    </div>
 
-       </div>
-	</div>
-	
     <div class="body-content">
 
            <div class="col-lg-4">
