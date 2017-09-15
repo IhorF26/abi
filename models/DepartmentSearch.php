@@ -60,10 +60,11 @@ class DepartmentSearch extends Department
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'company_id' => $this->company_id,
+            'company_id' => Yii::$app->session->get('company'),
         ]);
 
         $query->andFilterWhere(['like', 'department_name', $this->department_name]);
+        $query = $query->orderBy('id DESC');
 
         return $dataProvider;
     }

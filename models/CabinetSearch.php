@@ -18,7 +18,7 @@ class CabinetSearch extends Cabinet
     public function rules()
     {
         return [
-            [['id', 'department_id'], 'integer'],
+            [['id', 'department_id', 'company_id'], 'integer'],
             [['cabinet_name'], 'safe'],
         ];
     }
@@ -61,6 +61,7 @@ class CabinetSearch extends Cabinet
         $query->andFilterWhere([
             'id' => $this->id,
             'department_id' => $this->department_id,
+            'company_id' => $this->company_id,
         ]);
 
         $query->andFilterWhere(['like', 'cabinet_name', $this->cabinet_name]);

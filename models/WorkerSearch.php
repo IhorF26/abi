@@ -18,8 +18,8 @@ class WorkerSearch extends Worker
     public function rules()
     {
         return [
-            [['id', 'num_kadrow', 'typ_contract', 'id_profil', 'company_id', 'cabinet_id'], 'integer'],
-            [['name', 'surname', 'position'], 'safe'],
+            [['id', 'konfigurator_id', 'num_kadrow', 'PESEL', 'NIP', 'typ_contract', 'company_id'], 'integer'],
+            [['name', 'name2', 'surname', 'date_birthday', 'email', 'phone_number', 'street', 'house_number', 'flat_number', 'zip_code', 'region', 'position'], 'safe'],
         ];
     }
 
@@ -60,15 +60,25 @@ class WorkerSearch extends Worker
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'konfigurator_id' => $this->konfigurator_id,
             'num_kadrow' => $this->num_kadrow,
+            'PESEL' => $this->PESEL,
+            'NIP' => $this->NIP,
             'typ_contract' => $this->typ_contract,
-            'id_profil' => $this->id_profil,
             'company_id' => $this->company_id,
-            'cabinet_id' => $this->cabinet_id,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'name2', $this->name2])
             ->andFilterWhere(['like', 'surname', $this->surname])
+            ->andFilterWhere(['like', 'date_birthday', $this->date_birthday])
+            ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'phone_number', $this->phone_number])
+            ->andFilterWhere(['like', 'street', $this->street])
+            ->andFilterWhere(['like', 'house_number', $this->house_number])
+            ->andFilterWhere(['like', 'flat_number', $this->flat_number])
+            ->andFilterWhere(['like', 'zip_code', $this->zip_code])
+            ->andFilterWhere(['like', 'region', $this->region])
             ->andFilterWhere(['like', 'position', $this->position]);
 
         return $dataProvider;

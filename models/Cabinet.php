@@ -10,9 +10,12 @@ use Yii;
  * @property integer $id
  * @property integer $department_id
  * @property string $cabinet_name
+ * @property integer $company_id
  *
  * @property Department $department
- * @property Worker[] $workers
+ * @property Company $company
+ * @property Equipment[] $equipments
+ * @property Konfigurator[] $konfigurators
  */
 class Cabinet extends \yii\db\ActiveRecord
 {
@@ -31,9 +34,10 @@ class Cabinet extends \yii\db\ActiveRecord
     {
         return [
             [['department_id'], 'required'],
-            [['department_id'], 'integer'],
+            [['department_id', 'company_id'], 'integer'],
             [['cabinet_name'], 'string', 'max' => 255],
             [['department_id'], 'exist', 'skipOnError' => true, 'targetClass' => Department::className(), 'targetAttribute' => ['department_id' => 'id']],
+            [['company_id'], 'exist', 'skipOnError' => true, 'targetClass' => Company::className(), 'targetAttribute' => ['company_id' => 'id']],
         ];
     }
 
@@ -46,6 +50,7 @@ class Cabinet extends \yii\db\ActiveRecord
             'id' => 'ID',
             'department_id' => 'Department ID',
             'cabinet_name' => 'Cabinet Name',
+            'company_id' => 'Company ID',
         ];
     }
 
@@ -60,8 +65,24 @@ class Cabinet extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getWorkers()
+    public function getCompany()
     {
-        return $this->hasMany(Worker::className(), ['cabinet_id' => 'id']);
+        return $this->hasOne(Company::className(), ['id' => 'company_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getEquipments()
+    {
+        return $this->hasMany(Equipment::className(), ['cabinet_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getKonfigurators()
+    {
+        return $this->hasMany(Konfigurator::className(), ['cabinet_id' => 'id']);
     }
 }

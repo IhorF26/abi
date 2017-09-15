@@ -17,21 +17,41 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
+    <?= $form->field($model, 'konfigurator_id') ?>
+
     <?= $form->field($model, 'num_kadrow') ?>
 
     <?= $form->field($model, 'name') ?>
 
-    <?= $form->field($model, 'surname') ?>
+    <?= $form->field($model, 'name2') ?>
 
-    <?= $form->field($model, 'position') ?>
+    <?php // echo $form->field($model, 'surname') ?>
+
+    <?php // echo $form->field($model, 'date_birthday') ?>
+
+    <?php // echo $form->field($model, 'email') ?>
+
+    <?php // echo $form->field($model, 'PESEL') ?>
+
+    <?php // echo $form->field($model, 'NIP') ?>
+
+    <?php // echo $form->field($model, 'phone_number') ?>
+
+    <?php // echo $form->field($model, 'street') ?>
+
+    <?php // echo $form->field($model, 'house_number') ?>
+
+    <?php // echo $form->field($model, 'flat_number') ?>
+
+    <?php // echo $form->field($model, 'zip_code') ?>
+
+    <?php // echo $form->field($model, 'region') ?>
+
+    <?php // echo $form->field($model, 'position') ?>
 
     <?php // echo $form->field($model, 'typ_contract') ?>
 
-    <?php // echo $form->field($model, 'id_profil') ?>
-
     <?php // echo $form->field($model, 'company_id') ?>
-
-    <?php // echo $form->field($model, 'cabinet_id') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
