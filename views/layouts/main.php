@@ -99,27 +99,34 @@ AppAsset::register($this);
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <div class = "row">
-        <div class="col-lg-3" style="border-right:1px solid #3d86a8; height:500px;">
-            <hr>
-            <ul  style="list-style-type: none;">
-                <li>
-                    <a href="/company/index" class="button" style="font-size:20px"> Companies <i class="fa fa-object-group" style="font-size:24px;color:#c5571e"></i></a>
-                </li>
-                <li>
-                    <a href="/worker/index" class="button" style="font-size:20px">Workers  <i class="fa fa-id-card-o" style="font-size:24px;color:#c5571e"></i></a>
-                </li>
-                <li>
-                    <a href="/department/index" class="button" style="font-size:20px">Departments  <i class="fa fa-group" style="font-size:24px;color:#c5571e"></i></a>
-                </li>
-                <li>
-                    <a href="/cabinet/index" class="button" style="font-size:20px">Cabinets  <i class="fa fa-key" style="font-size:24px;color:#c5571e"></i></a>
-                </li>
-            </ul>
-        </div>
-            <div class="col-lg-9">
+             <div class="col-lg-3" style="border-right:1px solid #000;height:500px;">
+                <hr>
+                <ul  style="list-style-type: none;">
+                    <h4><i class="fa fa-file" style="font-size:24px;"></i> Dokumentacja ABI</h4>
+                    <br/>
+                    <br/>
+                    <li>
+                        <a href="" class="button" style="font-size:20px">Konfigurator  <i class="fa fa-cogs" style="font-size:24px;color:#c5571e"></i></a>
+                    </li><br/>
+                    <li>
+                        <a href="/worker/index" class="button" style="font-size:20px">Pracownicy  <i class="fa fa-id-card-o" style="font-size:24px;color:#c5571e"></i></a>
+                    </li><br/>
+                    <li>
+                        <a href="/department/index" class="button" style="font-size:20px"> Działy <i class="fa fa-object-group" style="font-size:24px;color:#c5571e"></i></a>
+                    </li><br/>
+                    <li>
+                        <a href="/zbir/index" class="button" style="font-size:20px">Zbiory  <i class="fa fa-cubes" style="font-size:24px;color:#c5571e"></i></a>
+                    </li><br/>
+
+                    <br/>
+
+                    <li>
+                        <a href="/site/catalogues" class="button" style="font-size:20px; color: limegreen"><i class="fa fa fa-wrench" style="font-size:24px;color:green"></i> Ustawienia </a>
+                    </li><br/>
+                </ul>
+            </div>
+              <div class="col-lg-9">
         <?= $content ?>
-        </div>
-        </div>
     </div>
     </div>
 </div>

@@ -38,39 +38,7 @@ $this->title = 'ABI Asystent';
 	
     <div class="body-content">
 
-        <div class="row">
-<<<<<<< HEAD
-=======
-            <div class="col-lg-3" style="border-right:1px solid #000;height:300px;">
-                <hr>
-                <ul  style="list-style-type: none;">
-                    <h4><i class="fa fa-file" style="font-size:24px;"></i> Dokumentacja ABI</h4>
-                    <br/>
-                    <br/>
-                    <li>
-                        <a href="" class="button" style="font-size:20px">Konfigurator  <i class="fa fa-cogs" style="font-size:24px;color:#c5571e"></i></a>
-                    </li><br/>
-                    <li>
-                        <a href="/worker/index" class="button" style="font-size:20px">Pracownicy  <i class="fa fa-id-card-o" style="font-size:24px;color:#c5571e"></i></a>
-                    </li><br/>
-                    <li>
-                        <a href="/department/index" class="button" style="font-size:20px"> Działy <i class="fa fa-object-group" style="font-size:24px;color:#c5571e"></i></a>
-                    </li><br/>
-                     <li>
-                        <a href="/zbir/index" class="button" style="font-size:20px">Zbiory  <i class="fa fa-cubes" style="font-size:24px;color:#c5571e"></i></a>
-                    </li><br/>
-
-                    <br/>
-
-                    <li>
-                        <a href="/site/catalogues" class="button" style="font-size:20px; color: limegreen"><i class="fa fa fa-wrench" style="font-size:24px;color:green"></i> Ustawienia </a>
-                    </li><br/>
-
-                </ul>
-            </div>
-
->>>>>>> 404887e8db375a3b9923eeb909cc2f9ba174a258
-            <div class="col-lg-3">
+           <div class="col-lg-3">
                 <hr>
                 <h2>Bezpieczeństwo</h2>
 
@@ -97,5 +65,4 @@ $this->title = 'ABI Asystent';
             </div>
         </div>
 
-    </div>
 </div>
