@@ -12,37 +12,10 @@ class m170914_153011_add_column_to_worker_table extends Migration
         $this->addColumn('worker', 'konfigurator_id',
             $this->integer(3)->after('id') );
 
-        // creates index for column `konfigurator_id`
-        $this->createIndex(
-            'idx-worker-konfigurator_id',
-            'worker',
-            'konfigurator_id'
-        );
-
-        // add foreign key for table `konfigurator`
-        $this->addForeignKey(
-            'fk-worker-konfigurator_id',
-            'worker',
-            'konfigurator_id',
-            'konfigurator',
-            'id',
-            'CASCADE'
-        );
     }
 
     public function down()
     {
-        // drops foreign key for table `konfigurator`
-        $this->dropForeignKey(
-            'fk-worker-konfigurator_id',
-            'worker'
-        );
-
-        // drops index for column `konfigurator_id`
-        $this->dropIndex(
-            'idx-worker-konfigurator_id',
-            'worker'
-        );
 
         $this->dropColumn('worker', 'konfigurator_id');
 
