@@ -28,8 +28,7 @@ AppAsset::register($this);
 
 <div class="wrap">
     <?php
-
-	    if (Yii::$app->user->isGuest) { 
+	    if (Yii::$app->user->isGuest) {
            NavBar::begin([
                 'brandLabel' => 'Asystent ABI',
                 'brandUrl' => Yii::$app->homeUrl,
@@ -141,7 +140,6 @@ AppAsset::register($this);
                         <a href="/program/index" class="button" style="font-size:20px;"> Programów  <i class="fa fa-cloud" style="font-size:24px;color:cornflowerblue"></i></a>
                     </li><br/>
                     </ul>
-
                 </ul>
             </div>
               <div class="col-lg-9">

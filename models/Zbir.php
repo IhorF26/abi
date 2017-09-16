@@ -49,10 +49,10 @@ class Zbir extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'description' => 'Description',
-            'department_id' => 'Department ID',
-            'company_id' => 'Company ID',
+            'name' => 'Nazwa zbiory',
+            'description' => 'Opis',
+            'department_id' => 'Nazwa działu',
+            'company_id' => 'Nazwa firmy',
         ];
     }
 

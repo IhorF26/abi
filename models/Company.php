@@ -101,4 +101,10 @@ class Company extends \yii\db\ActiveRecord
         return Arrayhelper::map($droptions, 'id', 'cabinet_name');
     }
 
+    public static function getZbirList($company_id)
+    {
+        $droptions = Zbir::find()->asArray()->where(['company_id' => $company_id])->all();
+        return Arrayhelper::map($droptions, 'id', 'name');
+    }
+
 }
