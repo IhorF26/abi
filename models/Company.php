@@ -49,7 +49,7 @@ class Company extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'Nazwa firmy',
             'nip' => 'Nip',
             'reg' => 'Reg',
             'status' => 'Status',
@@ -90,6 +90,7 @@ class Company extends \yii\db\ActiveRecord
         return new CompanyQuery(get_called_class());
     }
 
+
     public static function getWorkerList($company_id)
     {
         $droptions = Worker::find()->asArray()->where(['company_id' => $company_id])->all();
@@ -101,4 +102,17 @@ class Company extends \yii\db\ActiveRecord
         $droptions = Department::find()->asArray()->where(['company_id' => $company_id])->all();
         return Arrayhelper::map($droptions, 'id', 'department_name');
     }
+
+    public static function getCabinetList($company_id)
+    {
+        $droptions = Cabinet::find()->asArray()->where(['company_id' => $company_id])->all();
+        return Arrayhelper::map($droptions, 'id', 'cabinet_name');
+    }
+
+    public static function getZbirList($company_id)
+    {
+        $droptions = Zbir::find()->asArray()->where(['company_id' => $company_id])->all();
+        return Arrayhelper::map($droptions, 'id', 'name');
+    }
+
 }

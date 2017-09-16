@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\ZbirPol;
-use app\models\ZbirPolSearch;
+use app\models\Zbirpol;
+use app\models\ZbirpolSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ZbirPolController implements the CRUD actions for ZbirPol model.
+ * ZbirpolController implements the CRUD actions for Zbirpol model.
  */
-class ZbirPolController extends Controller
+class ZbirpolController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class ZbirPolController extends Controller
     }
 
     /**
-     * Lists all ZbirPol models.
+     * Lists all Zbirpol models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ZbirPolSearch();
+        $searchModel = new ZbirpolSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class ZbirPolController extends Controller
     }
 
     /**
-     * Displays a single ZbirPol model.
+     * Displays a single Zbirpol model.
      * @param integer $id
      * @return mixed
      */
@@ -57,16 +57,19 @@ class ZbirPolController extends Controller
     }
 
     /**
-     * Creates a new ZbirPol model.
+     * Creates a new Zbirpol model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new ZbirPol();
+        $model = new Zbirpol();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+//            $model->company_id=Yii::$app->request->post()
+            $model->company_id=Yii::$app->session->get('company');
+            if ($model->save())
+                return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -75,7 +78,7 @@ class ZbirPolController extends Controller
     }
 
     /**
-     * Updates an existing ZbirPol model.
+     * Updates an existing Zbirpol model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -85,7 +88,7 @@ class ZbirPolController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -94,7 +97,7 @@ class ZbirPolController extends Controller
     }
 
     /**
-     * Deletes an existing ZbirPol model.
+     * Deletes an existing Zbirpol model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -107,15 +110,15 @@ class ZbirPolController extends Controller
     }
 
     /**
-     * Finds the ZbirPol model based on its primary key value.
+     * Finds the Zbirpol model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return ZbirPol the loaded model
+     * @return Zbirpol the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = ZbirPol::findOne($id)) !== null) {
+        if (($model = Zbirpol::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

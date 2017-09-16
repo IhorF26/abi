@@ -48,10 +48,10 @@ class Cabinet extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'department_id' => 'Department ID',
-            'cabinet_name' => 'Cabinet Name',
-            'company_id' => 'Company ID',
+            'id' => 'L.p.',
+            'department' => 'Nazwa działu',
+            'cabinet_name' => 'Nazwa pomieszczenia',
+            'company' => 'Nazwa firmy',
         ];
     }
 
@@ -85,12 +85,6 @@ class Cabinet extends \yii\db\ActiveRecord
     public function getKonfigurators()
     {
         return $this->hasMany(Konfigurator::className(), ['cabinet_id' => 'id']);
-    }
-
-    public static function getDepartmentList($company_id)
-    {
-        $droptions = Department::find()->asArray()->where(['company_id' => $company_id])->all();
-        return Arrayhelper::map($droptions, 'id', 'department_name');
     }
 
 

@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\CabinetSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Cabinets';
+$this->title = 'Lista pomieszczenia';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cabinet-index">
@@ -16,11 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Cabinet', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Utworzyć pomieszczenia', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+       // 'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'department_id',
                 'filter' => true,
                 'format' => 'raw',
-                'label' => 'Department',
+                'label' => 'Dział',
                 'value' => function ($model) {
                     return  $model->department->department_name;
                 },

@@ -4,22 +4,22 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\ZbirPol */
+/* @var $model app\models\Zbirpol */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Zbir Pols', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Pola zbiory', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="zbir-pol-view">
+<div class="zbirpol-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Aktualizacja', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Kasować', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Czy na pewno chcesz usunąć ten element?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -28,12 +28,22 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+     //       'id',
             'name',
             'description',
             'status',
-            'zbir_id',
-            'company_id',
+            [
+                'label' => "Zbior",
+                'attribute' => 'zbir',
+                'format'=>'raw',
+                'value' => $model->zbir->name !== null ? Html::encode($model->zbir->name) : 'no data'
+            ],
+            [
+                'label' => 'Firma',
+                'attribute' => 'company',
+                'format'=>'raw',
+                'value' => $model->company->name !== null ? Html::encode($model->company->name) : 'no data'
+            ],
         ],
     ]) ?>
 

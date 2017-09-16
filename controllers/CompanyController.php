@@ -76,10 +76,10 @@ class CompanyController extends Controller
 			$model_usercompany->company_id = $model->id;
 			if ($model_usercompany->save()){
 			Yii::$app->session->set('company', $model->id);
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
 			}
 			else 
-			throw new HttpException(404 ,'Cannot save relative record');
+			throw new HttpException(404 ,'Nie można zapisać względnego zapisu!');
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -98,7 +98,7 @@ class CompanyController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,

@@ -4,13 +4,13 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model app\models\ZbirPol */
+/* @var $model app\models\Zbirpol */
 
-$this->title = 'Create Zbir Pol';
-$this->params['breadcrumbs'][] = ['label' => 'Zbir Pols', 'url' => ['index']];
+$this->title = 'Utwórz';
+$this->params['breadcrumbs'][] = ['label' => 'Pole', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="zbir-pol-create">
+<div class="zbirpol-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

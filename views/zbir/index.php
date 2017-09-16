@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\ZbirSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Zbirs';
+$this->title = 'Lista zbiory';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="zbir-index">
@@ -16,19 +16,27 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Zbir', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Tworzyć Zbior', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+       // 'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+         //   ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+          //  'id',
             'name',
             'description',
-            'department_id',
-            'company_id',
+            [
+                'class' => 'yii\grid\DataColumn',
+                'attribute' => 'department_id',
+                'filter' => true,
+                'format' => 'raw',
+                'label' => 'Dział',
+                'value' => function ($model) {
+                    return  $model->department->department_name;
+                },
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

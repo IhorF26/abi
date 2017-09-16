@@ -42,7 +42,7 @@ class CabinetSearch extends Cabinet
      */
     public function search($params)
     {
-        $query = Cabinet::find();
+        $query = Cabinet::find()->where(['company_id' => Yii::$app->session->get('company')])->orderBy('id DESC');
 
         // add conditions that should always apply here
 
@@ -62,14 +62,10 @@ class CabinetSearch extends Cabinet
         $query->andFilterWhere([
             'id' => $this->id,
             'department_id' => $this->department_id,
-            'company_id' => Yii::$app->session->get('company'),
-
-//            'department' => $this->department->department_name,
-//            'company' => $this->company->name,
+  //          'department' => $this->department->department_name,
         ]);
 
         $query->andFilterWhere(['like', 'cabinet_name', $this->cabinet_name]);
-//        $query = $query->orderBy('id DESC');
 
         return $dataProvider;
     }

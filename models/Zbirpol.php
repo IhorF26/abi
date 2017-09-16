@@ -17,7 +17,7 @@ use Yii;
  * @property Company $company
  * @property Zbir $zbir
  */
-class ZbirPol extends \yii\db\ActiveRecord
+class Zbirpol extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
@@ -48,11 +48,11 @@ class ZbirPol extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'description' => 'Description',
+            'name' => 'Nazwa pola',
+            'description' => 'Opis',
             'status' => 'Status',
-            'zbir_id' => 'Zbir ID',
-            'company_id' => 'Company ID',
+            'zbir_id' => 'Zbir',
+            'company_id' => 'Firma',
         ];
     }
 

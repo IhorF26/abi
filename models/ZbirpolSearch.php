@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\EquipmentProgram;
+use app\models\Zbirpol;
 
 /**
- * EquipmentProgramSearch represents the model behind the search form about `app\models\EquipmentProgram`.
+ * ZbirpolSearch represents the model behind the search form about `app\models\Zbirpol`.
  */
-class EquipmentProgramSearch extends EquipmentProgram
+class ZbirpolSearch extends Zbirpol
 {
     /**
      * @inheritdoc
@@ -18,7 +18,8 @@ class EquipmentProgramSearch extends EquipmentProgram
     public function rules()
     {
         return [
-            [['id', 'equipment_id', 'program_id', 'company_id'], 'integer'],
+            [['id', 'status', 'zbir_id', 'company_id'], 'integer'],
+            [['name', 'description'], 'safe'],
         ];
     }
 
@@ -40,7 +41,7 @@ class EquipmentProgramSearch extends EquipmentProgram
      */
     public function search($params)
     {
-        $query = EquipmentProgram::find();
+        $query = Zbirpol::find()->where(['company_id' => Yii::$app->session->get('company')])->orderBy('id DESC');
 
         // add conditions that should always apply here
 
@@ -59,10 +60,12 @@ class EquipmentProgramSearch extends EquipmentProgram
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'equipment_id' => $this->equipment_id,
-            'program_id' => $this->program_id,
-            'company_id' => $this->company_id,
+            'status' => $this->status,
+            'zbir_id' => $this->zbir_id,
         ]);
+
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
     }

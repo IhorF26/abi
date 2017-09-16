@@ -3,14 +3,14 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\ZbirPol */
+/* @var $model app\models\Zbirpol */
 
-$this->title = 'Update Zbir Pol: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Zbir Pols', 'url' => ['index']];
+$this->title = 'Uaktualnienie pola: ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Pole', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Aktualizacji';
 ?>
-<div class="zbir-pol-update">
+<div class="zbirpol-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
