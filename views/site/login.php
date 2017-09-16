@@ -8,7 +8,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 
-$this->title = 'Login';
+$this->title = 'Autoryzacja';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -31,18 +31,18 @@ $this->params['breadcrumbs'][] = $this->title;
 		
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ->label('Nazwa użytkownika') ?>
 
-                <?= $form->field($model, 'password')->passwordInput() ?>
+                <?= $form->field($model, 'password')->passwordInput() ->label('Hasło') ?>
 
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
+                <?= $form->field($model, 'rememberMe')->checkbox()->label('Zapamiętaj mnie') ?>
 
                 <div style="color:#999;margin:1em 0">
-                    <?= 'If you forgot your password you can '.Html::a('reset it', ['site/request-password-reset']) ?>.
+                    <?= 'Jeśli zapomniałeś hasła, możesz '.Html::a('zresetować', ['site/request-password-reset']) ?>.
                 </div>
 
                 <div class="form-group">
-                    <?= Html::submitButton('<span class="glyphicon glyphicon-log-in"></span> Login', ['class' => 'btn btn-primary login-btn', 'name' => 'login-button']) ?>
+                    <?= Html::submitButton('<span class="glyphicon glyphicon-log-in"></span> Zaloguj', ['class' => 'btn btn-primary login-btn', 'name' => 'login-button']) ?>
                 </div>
             <?php ActiveForm::end(); ?>
 	 </div>

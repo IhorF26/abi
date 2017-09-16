@@ -23,7 +23,7 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body>
+<body style="background: whitesmoke">
 <?php $this->beginBody() ?>
 
 <div class="wrap">
@@ -38,8 +38,8 @@ AppAsset::register($this);
                 ],
             ]);
            $menuItems = [
-			   ['label' => 'Login', 'url' => ['/site/login']],
-               ['label' => 'Register', 'url' => ['/site/signup']],
+			   ['label' => 'Zaloguj', 'url' => ['/site/login']],
+               ['label' => 'Zarejestrować', 'url' => ['/site/signup']],
            ];
            echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
@@ -70,7 +70,7 @@ AppAsset::register($this);
                 $menuItems[] = '<li>'
                     . Html::beginForm(['/site/logout'], 'post')
                     . Html::submitButton(
-                         'Logout'.' (' . Html::encode(Yii::$app->user->identity->username) . ')',
+                         'Wyloguj'.' (' . Html::encode(Yii::$app->user->identity->username) . ')',
                         ['class' => 'btn btn-link']
                     )
                     . Html::endForm()
@@ -152,7 +152,7 @@ AppAsset::register($this);
 </div>
 
 </div>
-<footer class="footer">
+<footer class="footer" style="background: snow">
     <div class="container">
         <p class="pull-left">&copy; Asystent ABI <?= date('Y') ?></p>
 
