@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Zbirpol */
 
-$this->title = 'Create Zbirpol';
-$this->params['breadcrumbs'][] = ['label' => 'Zbirpols', 'url' => ['index']];
+$this->title = 'Utwórz';
+$this->params['breadcrumbs'][] = ['label' => 'Pole', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="zbirpol-create">

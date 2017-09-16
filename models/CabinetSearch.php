@@ -63,7 +63,6 @@ class CabinetSearch extends Cabinet
             'id' => $this->id,
             'department_id' => $this->department_id,
             'department' => $this->department->department_name,
-            'company' => $this->company->name,
         ]);
 
         $query->andFilterWhere(['like', 'cabinet_name', $this->cabinet_name]);

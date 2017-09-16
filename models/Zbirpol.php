@@ -48,11 +48,11 @@ class Zbirpol extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'description' => 'Description',
+            'name' => 'Nazwa pola',
+            'description' => 'Opis',
             'status' => 'Status',
-            'zbir_id' => 'Zbir ID',
-            'company_id' => 'Company ID',
+            'zbir_id' => 'Zbir',
+            'company_id' => 'Firma',
         ];
     }
 

@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\ZbirpolSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Zbirpols';
+$this->title = 'Pola listy';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="zbirpol-index">
@@ -16,19 +16,28 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Zbirpol', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Utwórz', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+       // 'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+          //  ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+         //   'id',
             'name',
             'description',
             'status',
-            'zbir_id',
+            [
+                'class' => 'yii\grid\DataColumn',
+                'attribute' => 'zbir_id',
+                'filter' => true,
+                'format' => 'raw',
+                'label' => 'Zbior',
+                'value' => function ($model) {
+                    return  $model->zbir->name;
+                },
+            ],
             // 'company_id',
 
             ['class' => 'yii\grid\ActionColumn'],
