@@ -1,7 +1,7 @@
 <?php
 
 namespace app\models;
-
+use yii\helpers\ArrayHelper;
 use Yii;
 
 /**
@@ -87,6 +87,18 @@ class Company extends \yii\db\ActiveRecord
     public static function find()
     {
         return new CompanyQuery(get_called_class());
+    }
+
+    public static function getDepartmentList($company_id)
+    {
+        $droptions = Department::find()->asArray()->where(['company_id' => $company_id])->all();
+        return Arrayhelper::map($droptions, 'id', 'department_name');
+    }
+
+    public static function getCabinetList($company_id)
+    {
+        $droptions = Cabinet::find()->asArray()->where(['company_id' => $company_id])->all();
+        return Arrayhelper::map($droptions, 'id', 'cabinet_name');
     }
 
 }
