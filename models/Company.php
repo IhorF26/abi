@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "company".
@@ -89,4 +90,15 @@ class Company extends \yii\db\ActiveRecord
         return new CompanyQuery(get_called_class());
     }
 
+    public static function getWorkerList($company_id)
+    {
+        $droptions = Worker::find()->asArray()->where(['company_id' => $company_id])->all();
+        return Arrayhelper::map($droptions, 'id', 'surname');
+    }
+
+    public static function getDepartmentList($company_id)
+    {
+        $droptions = Department::find()->asArray()->where(['company_id' => $company_id])->all();
+        return Arrayhelper::map($droptions, 'id', 'department_name');
+    }
 }

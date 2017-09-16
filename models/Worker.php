@@ -90,4 +90,5 @@ class Worker extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Company::className(), ['id' => 'company_id']);
     }
+
 }

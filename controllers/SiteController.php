@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\Department;
+use app\models\Zbir;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -162,7 +164,10 @@ class SiteController extends Controller
         return $this->render('catalogues');
     }
 
-
+    public function actionConfigurator()
+    {
+        return $this->render('configurator');
+    }
 
     /**
      * Signs user up.
@@ -232,6 +237,32 @@ class SiteController extends Controller
         ]);
     }
 
-	
-	
+
+    public function actionGetzbioresbydepartment()
+    {
+        if (Yii::$app->request->isAjax && Yii::$app->user) {
+
+            $department_id = (int)(json_decode($_POST['department_id'], true));
+            if (Department::findOne($department_id)){
+                $zbiores = Zbir::find()->where(['department_id' => $department_id])->all();
+
+                if ($zbiores){
+                    \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                    return [
+                        'zbiores' => $zbiores,
+                    ];
+                }
+                else {
+                    \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                    return [
+                        'error' => 'Error to get zbiores.'
+                    ];
+                }
+            }
+        }
+    }
+
+
+
+
 }

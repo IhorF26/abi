@@ -106,7 +106,7 @@ AppAsset::register($this);
                     <br/>
                     <br/>
                     <li>
-                        <a href="" class="button" style="font-size:20px">Konfigurator  <i class="fa fa-cogs" style="font-size:24px;color:#c5571e"></i></a>
+                        <a href="/site/configurator" class="button" style="font-size:20px">Konfigurator  <i class="fa fa-cogs" style="font-size:24px;color:#c5571e"></i></a>
                     </li><br/>
                     <li>
                         <a href="/worker/index" class="button" style="font-size:20px">Pracownicy  <i class="fa fa-id-card-o" style="font-size:24px;color:#c5571e"></i></a>
