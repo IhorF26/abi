@@ -97,6 +97,11 @@ AppAsset::register($this);
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
+        <?php if (Yii::$app->user->isGuest) { ?>
+        <div class="col-lg-9">
+            <?= $content ?>
+        </div>
+        <?php } else {?>
         <div class = "row">
              <div class="col-lg-3" style="border-right:1px solid #000;height:500px;">
                 <hr>
@@ -142,6 +147,7 @@ AppAsset::register($this);
               <div class="col-lg-9">
         <?= $content ?>
     </div>
+            <?php } ?>
     </div>
 </div>
 
