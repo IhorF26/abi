@@ -62,7 +62,6 @@ class ZbirpolSearch extends Zbirpol
             'id' => $this->id,
             'status' => $this->status,
             'zbir_id' => $this->zbir_id,
-            'company_id' => $this->company_id,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

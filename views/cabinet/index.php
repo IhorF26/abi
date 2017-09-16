@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'department_id',
                 'filter' => true,
                 'format' => 'raw',
-                'label' => 'Działy',
+                'label' => 'Dział',
                 'value' => function ($model) {
                     return  $model->department->department_name;
                 },

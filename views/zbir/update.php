@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Zbir */
 
-$this->title = 'Update Zbir: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Zbirs', 'url' => ['index']];
+$this->title = 'Zbiory aktualizacji: ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Zbiory', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Aktualizacji';
 ?>
 <div class="zbir-update">
 
