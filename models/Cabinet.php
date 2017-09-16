@@ -87,11 +87,5 @@ class Cabinet extends \yii\db\ActiveRecord
         return $this->hasMany(Konfigurator::className(), ['cabinet_id' => 'id']);
     }
 
-    public function getDepartmentList($company_id)
-    {
-        $droptions = Department::find()->asArray()->where(['company_id' => $company_id])->all();
-        return Arrayhelper::map($droptions, 'id', 'department_name');
-    }
-
 
 }

@@ -13,7 +13,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'department_id')->dropDownList($model->getDepartmentList(Yii::$app->session->get('company')),['prompt' => 'Wybierz dział'])->label('Dział');?>
+    <?= $form->field($model, 'department_id')->dropDownList(app\models\Company::getDepartmentList(Yii::$app->session->get('company')),['prompt' => 'Wybierz dział'])->label('Dział');?>
 
     <?= $form->field($model, 'cabinet_name')->textInput(['maxlength' => true]) ?>
 

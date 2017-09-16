@@ -55,7 +55,7 @@ AppAsset::register($this);
 
 			
             NavBar::begin([
-                'brandLabel' => 'Asystent ABI ("'.Html::encode($companyname).'")',
+                'brandLabel' => 'Asystent ABI - ('.Html::encode($companyname).')',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
