@@ -65,7 +65,6 @@ class WorkerSearch extends Worker
             'PESEL' => $this->PESEL,
             'NIP' => $this->NIP,
             'typ_contract' => $this->typ_contract,
-            'company_id' => $this->company_id,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

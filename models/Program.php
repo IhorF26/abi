@@ -47,11 +47,11 @@ class Program extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => 'Name',
-            'description' => 'Description',
-            'department_id' => 'Department ID',
-            'company_id' => 'Company ID',
+            'id' => '',
+            'name' => 'Nazwa programu',
+            'description' => 'Opis',
+            'department_id' => 'Dział',
+            'company_id' => 'Firma',
         ];
     }
 

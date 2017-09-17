@@ -7,29 +7,30 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Worker */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Workers', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Pracownik', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="worker-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::a('Wróć do listy pracowników', ['index'], ['class' => 'btn btn-success']) ?>           <?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Aktualizacja', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Kasować', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Czy na pewno chcesz usunąć ten element?',
                 'method' => 'post',
             ],
         ]) ?>
     </p>
 
+
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'konfigurator_id',
+     //       'id',
+      //      'konfigurator_id',
             'num_kadrow',
             'name',
             'name2',
@@ -45,8 +46,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'zip_code',
             'region',
             'position',
-            'typ_contract',
-            'company_id',
+        //    'typ_contract',
+            [
+                'label' => 'Firma',
+                'attribute' => 'company',
+                'format'=>'raw',
+                'value' => $model->company->name !== null ? Html::encode($model->company->name) : 'no data'
+            ],
         ],
     ]) ?>
 

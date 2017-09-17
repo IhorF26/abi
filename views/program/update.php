@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Program */
 
-$this->title = 'Update Program: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Programs', 'url' => ['index']];
+$this->title = 'Aktualizuj program: ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Program', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Aktualizacji';
 ?>
 <div class="program-update">
 

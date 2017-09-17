@@ -65,7 +65,10 @@ class WorkerController extends Controller
     {
         $model = new Worker();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+//            $model->company_id=Yii::$app->request->post()
+            $model->company_id=Yii::$app->session->get('company');
+            if ($model->save())
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [

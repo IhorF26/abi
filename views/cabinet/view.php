@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Cabinet */
 
 $this->title = $model->cabinet_name;
-$this->params['breadcrumbs'][] = ['label' => 'Pomieszczenia', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Pokój', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cabinet-view">

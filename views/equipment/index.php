@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\EquipmentSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Equipments';
+$this->title = 'Lista urządzenia';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="equipment-index">
@@ -16,19 +16,29 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Equipment', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Utwórz urządzenie', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+       // 'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn','header' =>('')],
 
-            'id',
-            'cabinet_id',
+        //    'id',
+          //  'cabinet_id',
             'name',
             'description',
-            'company_id',
+            [
+                'class' => 'yii\grid\DataColumn',
+                'attribute' => 'cabinet_id',
+                'filter' => true,
+                'format' => 'raw',
+                'label' => 'Pokój',
+                'value' => function ($model) {
+                    return  $model->cabinet->cabinet_name;
+                },
+            ],
+       //     'company_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

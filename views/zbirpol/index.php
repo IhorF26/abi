@@ -22,12 +22,20 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
        // 'filterModel' => $searchModel,
         'columns' => [
-          //  ['class' => 'yii\grid\SerialColumn'],
-
+            ['class' => 'yii\grid\SerialColumn','header' =>('')],
          //   'id',
             'name',
             'description',
-            'status',
+            [
+                'class' => 'yii\grid\DataColumn',
+                'attribute' => 'status',
+                'filter' => true,
+                'format' => 'raw',
+                'label' => 'Status',
+                'value' => function ($model) {
+                    return  $model->status == 1 ? "ON" : 'OFF';
+                },
+            ],
             [
                 'class' => 'yii\grid\DataColumn',
                 'attribute' => 'zbir_id',
