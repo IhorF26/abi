@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Equipment */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Equipments', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Urządzenia', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="equipment-view">
@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Aktualizacja', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Kasować', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Czy na pewno chcesz usunąć ten element?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -28,11 +28,21 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'cabinet_id',
+          //  'id',
+            [
+                'label' => 'Pokój',
+                'attribute' => 'cabinet',
+                'format'=>'raw',
+                'value' => $model->cabinet->cabinet_name !== null ? Html::encode($model->cabinet->cabinet_name) : 'no data'
+            ],
             'name',
             'description',
-            'company_id',
+            [
+                'label' => 'Firma',
+                'attribute' => 'company',
+                'format'=>'raw',
+                'value' => $model->company->name !== null ? Html::encode($model->company->name) : 'no data'
+            ],
         ],
     ]) ?>
 

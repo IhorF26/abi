@@ -115,4 +115,10 @@ class Company extends \yii\db\ActiveRecord
         return Arrayhelper::map($droptions, 'id', 'name');
     }
 
+    public static function getEquipmentList($company_id)
+    {
+        $droptions = Equipment::find()->asArray()->where(['company_id' => $company_id])->all();
+        return Arrayhelper::map($droptions, 'id', 'name');
+    }
+
 }

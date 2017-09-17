@@ -41,7 +41,7 @@ class EquipmentSearch extends Equipment
      */
     public function search($params)
     {
-        $query = Equipment::find();
+        $query = Equipment::find()->where(['company_id' => Yii::$app->session->get('company')])->orderBy('id DESC');
 
         // add conditions that should always apply here
 
@@ -61,7 +61,6 @@ class EquipmentSearch extends Equipment
         $query->andFilterWhere([
             'id' => $this->id,
             'cabinet_id' => $this->cabinet_id,
-            'company_id' => $this->company_id,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
