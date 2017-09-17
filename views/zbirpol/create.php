@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Zbirpol */
 
-$this->title = 'Utwórz';
+$this->title = 'Dodaj pole';
 $this->params['breadcrumbs'][] = ['label' => 'Pole', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

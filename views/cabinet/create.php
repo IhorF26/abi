@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Cabinet */
 
-$this->title = 'Utworzyć pokój';
+$this->title = 'Dodaj pokój';
 $this->params['breadcrumbs'][] = ['label' => 'Nazwa pokój', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

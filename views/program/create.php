@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Program */
 
-$this->title = 'Utwórz program';
+$this->title = 'Dodaj program';
 $this->params['breadcrumbs'][] = ['label' => 'Nazwa programu', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

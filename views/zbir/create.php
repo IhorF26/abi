@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Zbir */
 
-$this->title = 'Utwórz zbior';
+$this->title = 'Dodaj zbior';
 $this->params['breadcrumbs'][] = ['label' => 'Nazwa zbiory', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

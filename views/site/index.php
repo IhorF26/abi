@@ -19,11 +19,11 @@ $this->title = 'ABI Asystent';
 		echo Html::dropDownList('company_id', 'null', $mycompanies, $options = ['id' => 'selectcompany',
             'options' => [Yii::$app->session->get('company') => ['Selected'=>'selected']], 'class' => "btn btn-primary dropdown-toggle", 'type'=>"button", 'data-toggle'=>"dropdown"]);
         echo '&nbsp;&nbsp;&nbsp';
-		echo Html::submitButton('Zmienić firmę', ['id' => 'go_company', 'class' => 'btn btn-success btn-sm']);
+		echo Html::submitButton('<i class="fa fa-university" aria-hidden="true"></i> Zmienić firmę', ['id' => 'go_company', 'class' => 'btn btn-success btn-sm']);
         ActiveForm::end(); ?>
 		<?php else: ?>	
 		<p>
-        <?= Html::a('Utwórz firmę', ['company/create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<i class="fa fa-plus-square-o" aria-hidden="true"></i> Dodaj firmę', ['company/create'], ['class' => 'btn btn-success']) ?>
 		</p>
 		<?php endif; ?>
         <hr>

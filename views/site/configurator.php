@@ -7,7 +7,7 @@ use yii\widgets\ActiveForm;
 
 $this->registerJsFile('/js/configurator.js');
 
-$this->title = 'Configurator';
+$this->title = 'Konfigurator';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-configurator">
@@ -20,14 +20,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="col-lg-4">
 
-        <?php echo '<h4> Please select worker</h4>';
+        <?php echo '<h4> Proszę wybrać pracownika</h4>';
         echo Html::dropDownList('worker', 'null', \app\models\Company::getWorkerList(Yii::$app->session->get('company')), $options = ['id' => 'selectedworker']) ?>
 
-        <?php echo '<h4> Please select department</h4>';
+        <?php echo '<h4> Proszę wybrać dział</h4>';
         echo Html::dropDownList('department', 'null', \app\models\Company::getDepartmentList(Yii::$app->session->get('company')), $options = ['id' => 'selecteddepartment', 'prompt' => 'Choose Department']) ?>
 
         <div id="zbir" style="display: none;">
-        <?php echo '<h4> Please select zbior</h4>';
+        <?php echo '<h4> Proszę wybrać zbior</h4>';
         echo Html::dropDownList('zbir', 'null', ['0'=>'No Items'], $options = ['id' => 'selectedzbir', 'prompt' => 'Choose zbir'])?>
             <div id="no_zbir" style="display: none;"> </div>
          </div>
@@ -44,18 +44,18 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-lg-4">
 
                 <div id="other_fields" style="display: none;">
-                    <?php echo '<h4> Please select cabinet</h4>';
+                    <?php echo '<h4> Proszę wybrać pokój</h4>';
                     echo Html::dropDownList('cabinet', 'null', \app\models\Company::getCabinetList(Yii::$app->session->get('company')), $options = ['id' => 'selectedcabinet']) ?>
 
-                    <?php echo '<h4> Please select computer</h4>';
+                    <?php echo '<h4> Proszę wybrać komputer</h4>';
                     echo Html::dropDownList('computer', 'null', \app\models\Company::getEquipmentList(Yii::$app->session->get('company')), $options = ['id' => 'selectedcomputer']) ?>
 
-                    <?php echo '<h4> Please select program</h4>';
+                    <?php echo '<h4> Proszę wybrać program</h4>';
                     echo Html::dropDownList('program', 'null', \app\models\Company::getProgramList(Yii::$app->session->get('company')), $options = ['id' => 'selectedprogram']) ?>
 
                     <div class="form-group"><br>
                         <?php // = Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-                        <?= Html::submitButton('Create', ['class' =>  'btn btn-success']) ?>
+                        <?= Html::submitButton('Stwórz', ['class' =>  'btn btn-success']) ?>
                     </div>
 
                 </div>

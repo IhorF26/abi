@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
         <?= $form->field($model, 'name')->textInput(['style' => 'width: 250px; float: right;']) ?>
 
 
-        <?= Html::submitButton('Szukaj', ['class' => 'btn btn-primary', 'style' => 'float: right;']) ?>
+        <?= Html::submitButton('<i class="fa fa-search" aria-hidden="true"></i> Szukaj ', ['class' => 'btn btn-primary', 'style' => 'float: right;']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
