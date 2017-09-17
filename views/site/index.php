@@ -31,7 +31,7 @@ $this->title = 'ABI Asystent';
 
 	    </div>
     <div class="jumbotron">
-        <h1>Asystent ABI</h1>
+        <h1 style="color: #000066; "><strong>Asystent ABI</strong></h1>
     </div>
 
     <div class="body-content">
