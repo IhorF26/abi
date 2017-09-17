@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\jui\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Worker */
@@ -12,35 +13,47 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'num_kadrow')->textInput() ?>
+    <?= $form->field($model, 'num_kadrow')->textInput(['style'=>'width: 200px']) ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'name')->textInput(['style'=>'width: 400px']) ?>
 
-    <?= $form->field($model, 'name2')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'name2')->textInput(['maxlength' => true, 'style'=>'width: 400px']) ?>
 
-    <?= $form->field($model, 'surname')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'surname')->textInput(['maxlength' => true, 'style'=>'width: 400px']) ?>
 
-    <?= $form->field($model, 'date_birthday')->textInput(['maxlength' => true]) ?>
+    <?  echo '<label class="control-label">Birth Date</label>'; ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+    <div class="worker-form">
 
-    <?= $form->field($model, 'PESEL')->textInput() ?>
+    <?  echo DatePicker::widget([
+        'model' => $model,
+        'attribute' => 'date_birthday',
+        'language' => 'pl',
+        'dateFormat' => 'yyyy-MM-dd',
+    ]);
+    ?>
 
-    <?= $form->field($model, 'NIP')->textInput() ?>
+    </div><br/>
 
-    <?= $form->field($model, 'phone_number')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'email')->textInput(['maxlength' => true, 'style'=>'width: 250px']) ?>
 
-    <?= $form->field($model, 'street')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'PESEL')->textInput(['style'=>'width: 200px']) ?>
 
-    <?= $form->field($model, 'house_number')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'NIP')->textInput(['style'=>'width: 200px']) ?>
 
-    <?= $form->field($model, 'flat_number')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'phone_number')->textInput(['maxlength' => true, 'style'=>'width: 200px']) ?>
 
-    <?= $form->field($model, 'zip_code')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'street')->textInput(['maxlength' => true, 'style'=>'width: 500px']) ?>
 
-    <?= $form->field($model, 'region')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'house_number')->textInput(['maxlength' => true, 'style'=>'width: 150px']) ?>
 
-    <?= $form->field($model, 'position')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'flat_number')->textInput(['maxlength' => true, 'style'=>'width: 150px']) ?>
+
+    <?= $form->field($model, 'zip_code')->textInput(['maxlength' => true, 'style'=>'width: 150px']) ?>
+
+    <?= $form->field($model, 'region')->textInput(['maxlength' => true, 'style'=>'width: 500px']) ?>
+
+    <?= $form->field($model, 'position')->textInput(['maxlength' => true, 'style'=>'width: 500px']) ?>
 
 
     <div class="form-group">
