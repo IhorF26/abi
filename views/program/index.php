@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\ProgramSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Programs';
+$this->title = 'Lista program';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="program-index">
@@ -16,19 +16,27 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Program', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Utwórz program', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+      //  'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
+         //   'id',
             'name',
             'description',
-            'department_id',
-            'company_id',
+            [
+                'class' => 'yii\grid\DataColumn',
+                'attribute' => 'department_id',
+                'filter' => true,
+                'format' => 'raw',
+                'label' => 'Dział',
+                'value' => function ($model) {
+                    return  $model->department->department_name;
+                },
+            ],
+         //   'company_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

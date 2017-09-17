@@ -41,7 +41,7 @@ class ProgramSearch extends Program
      */
     public function search($params)
     {
-        $query = Program::find();
+        $query = Program::find()->where(['company_id' => Yii::$app->session->get('company')])->orderBy('id DESC');
 
         // add conditions that should always apply here
 
@@ -61,7 +61,6 @@ class ProgramSearch extends Program
         $query->andFilterWhere([
             'id' => $this->id,
             'department_id' => $this->department_id,
-            'company_id' => $this->company_id,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

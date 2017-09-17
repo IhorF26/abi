@@ -50,8 +50,8 @@ class Cabinet extends \yii\db\ActiveRecord
         return [
             'id' => 'L.p.',
             'department' => 'Nazwa działu',
-            'cabinet_name' => 'Nazwa pokój',
-            'company' => 'Nazwa firmy',
+            'cabinet_name' => 'Pokój',
+            'company' => 'Firma',
         ];
     }
 
