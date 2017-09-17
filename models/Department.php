@@ -43,7 +43,7 @@ class Department extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'L.p.',
+            'id' => '',
             'company_id' => '',
             'department_name' => 'Nazwa Działu',
         ];

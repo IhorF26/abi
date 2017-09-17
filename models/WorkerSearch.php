@@ -41,7 +41,7 @@ class WorkerSearch extends Worker
      */
     public function search($params)
     {
-        $query = Worker::find()->where(['company_id' => Yii::$app->session->get('company')])->orderBy('id DESC');
+        $query = Worker::find()->where(['company_id' => Yii::$app->session->get('company')]);
 
         // add conditions that should always apply here
 

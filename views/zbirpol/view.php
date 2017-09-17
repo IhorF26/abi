@@ -31,7 +31,12 @@ $this->params['breadcrumbs'][] = $this->title;
      //       'id',
             'name',
             'description',
-            'status',
+            [
+                'label' => "Status",
+                'attribute' => 'status',
+                'format'=>'raw',
+                'value' => $model->status == 1 ? "ON" : 'OFF'
+            ],
             [
                 'label' => "Zbior",
                 'attribute' => 'zbir',

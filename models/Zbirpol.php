@@ -50,7 +50,7 @@ class Zbirpol extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Nazwa pola',
             'description' => 'Opis',
-            'status' => 'Status',
+            'status' => 'Status (pole jest używane)',
             'zbir_id' => 'Zbir',
             'company_id' => 'Firma',
         ];
