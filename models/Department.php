@@ -64,4 +64,13 @@ class Department extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Company::className(), ['id' => 'company_id']);
     }
+
+    public static function getCabinetList($department_id)
+    {
+        $droptions = Cabinet::find()->asArray()->where(['department_id' => $department_id])->all();
+        return Arrayhelper::map($droptions, 'id', 'cabinet_name');
+    }
+
+
+
 }

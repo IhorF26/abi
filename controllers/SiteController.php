@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Department;
 use app\models\Zbir;
+use app\models\Zbirpol;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -238,24 +239,24 @@ class SiteController extends Controller
     }
 
 
-    public function actionGetzbioresbydepartment()
+    public function actionGetzboresbydepartment()
     {
         if (Yii::$app->request->isAjax && Yii::$app->user) {
 
             $department_id = (int)(json_decode($_POST['department_id'], true));
             if (Department::findOne($department_id)){
-                $zbiores = Zbir::find()->where(['department_id' => $department_id])->all();
+                $zbores = Zbir::find()->where(['department_id' => $department_id])->all();
 
-                if ($zbiores){
+                if ($zbores){
                     \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
                     return [
-                        'zbiores' => $zbiores,
+                        'zbores' => $zbores,
                     ];
                 }
                 else {
                     \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
                     return [
-                        'error' => 'Error to get zbiores.'
+                        'error' => 'Cannot to get zbores.'
                     ];
                 }
             }
@@ -263,6 +264,27 @@ class SiteController extends Controller
     }
 
 
+    public function actionGetzbirfields()
+    {
+        if (Yii::$app->request->isAjax && Yii::$app->user) {
+
+            $zbir_id = (int)(json_decode($_POST['zbir_id'], true));
+            if (Zbir::findOne($zbir_id)) {
+                $zbir_fields = Zbirpol::find()->where(['zbir_id' => $zbir_id])->all();
+                if ($zbir_fields) {
+                    \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                    return [
+                        'zbirfields' => $zbir_fields,
+                    ];
+                } else {
+                    \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                    return [
+                        'error' => 'Cannot  get zbirfields or empty.'
+                    ];
+                }
+            }
+        }
+    }
 
 
-}
+    }

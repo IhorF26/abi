@@ -102,7 +102,7 @@ AppAsset::register($this);
         </div>
         <?php } else {?>
         <div class = "row">
-             <div class="col-lg-3" style="border-right:1px solid #000;height:500px;">
+             <div class="col-lg-3" style="border-right:1px solid #000;height:600px;">
                 <hr>
                 <ul  style="list-style-type: none;">
                     <h4><i class="fa fa-file" style="font-size:24px;"></i> Dokumentacja ABI</h4>
