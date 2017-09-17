@@ -30,7 +30,7 @@ class Department extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['company_id'], 'required'],
+            [['company_id', 'department_name'], 'required'],
             [['company_id'], 'integer'],
             [['department_name'], 'string', 'max' => 255],
             [['company_id'], 'exist', 'skipOnError' => true, 'targetClass' => Company::className(), 'targetAttribute' => ['company_id' => 'id']],

@@ -15,7 +15,6 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'department_name')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= $form->field($model, 'company_id')->hiddenInput(['value' => Yii::$app->session->get('company')]) ?>
         <?= Html::submitButton($model->isNewRecord ? 'Stwórz' : 'Aktualizacja', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
