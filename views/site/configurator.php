@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div id="zbir" style="display: none;">
         <?php echo '<h4> Please select zbior</h4>';
         echo Html::dropDownList('zbir', 'null', ['0'=>'No Items'], $options = ['id' => 'selectedzbir', 'prompt' => 'Choose zbir'])?>
-            <div id="no_zbir" style="display: none;"></div>>
+            <div id="no_zbir" style="display: none;"> </div>
          </div>
 
         <?php // =  $form->field($model, 'department_id')->dropDownList($model->getDepartmentList(Yii::$app->session->get('company')),['prompt' => 'Please Choose Department']);?>
@@ -48,10 +48,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     echo Html::dropDownList('cabinet', 'null', \app\models\Company::getCabinetList(Yii::$app->session->get('company')), $options = ['id' => 'selectedcabinet']) ?>
 
                     <?php echo '<h4> Please select computer</h4>';
-                    echo Html::dropDownList('cabinet', 'null', \app\models\Company::getCabinetList(Yii::$app->session->get('company')), $options = ['id' => 'selectedcabinet']) ?>
+                    echo Html::dropDownList('computer', 'null', \app\models\Company::getEquipmentList(Yii::$app->session->get('company')), $options = ['id' => 'selectedcomputer']) ?>
 
                     <?php echo '<h4> Please select program</h4>';
-                    echo Html::dropDownList('cabinet', 'null', \app\models\Company::getCabinetList(Yii::$app->session->get('company')), $options = ['id' => 'selectedcabinet']) ?>
+                    echo Html::dropDownList('program', 'null', \app\models\Company::getProgramList(Yii::$app->session->get('company')), $options = ['id' => 'selectedprogram']) ?>
 
                     <div class="form-group"><br>
                         <?php // = Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
