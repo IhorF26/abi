@@ -24,11 +24,11 @@ $this->params['breadcrumbs'][] = $this->title;
         echo Html::dropDownList('worker', 'null', \app\models\Company::getWorkerList(Yii::$app->session->get('company')), $options = ['id' => 'selectedworker']) ?>
 
         <?php echo '<h4> Proszę wybrać dział</h4>';
-        echo Html::dropDownList('department', 'null', \app\models\Company::getDepartmentList(Yii::$app->session->get('company')), $options = ['id' => 'selecteddepartment', 'prompt' => 'Choose Department']) ?>
+        echo Html::dropDownList('department', 'null', \app\models\Company::getDepartmentList(Yii::$app->session->get('company')), $options = ['id' => 'selecteddepartment', 'prompt' => 'Wybierz dział']) ?>
 
         <div id="zbir" style="display: none;">
         <?php echo '<h4> Proszę wybrać zbior</h4>';
-        echo Html::dropDownList('zbir', 'null', ['0'=>'No Items'], $options = ['id' => 'selectedzbir', 'prompt' => 'Choose zbir'])?>
+        echo Html::dropDownList('zbir', 'null', ['0'=>'No Items'], $options = ['id' => 'selectedzbir', 'prompt' => 'Wybierz zbir'])?>
             <div id="no_zbir" style="display: none;"> </div>
          </div>
 
@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <div id="other_fields" style="display: none;">
                     <?php echo '<h4> Proszę wybrać pokój</h4>';
-                    echo Html::dropDownList('cabinet', 'null', \app\models\Company::getCabinetList(Yii::$app->session->get('company')), $options = ['id' => 'selectedcabinet']) ?>
+                    echo Html::dropDownList('cabinet', 'null', \app\models\Company::getCabinetList(Yii::$app->session->get('company')),  $options = ['id' => 'selectedcabinet']) ?>
 
                     <?php echo '<h4> Proszę wybrać komputer</h4>';
                     echo Html::dropDownList('computer', 'null', \app\models\Company::getEquipmentList(Yii::$app->session->get('company')), $options = ['id' => 'selectedcomputer']) ?>
