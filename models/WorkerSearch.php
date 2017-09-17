@@ -41,7 +41,7 @@ class WorkerSearch extends Worker
      */
     public function search($params)
     {
-        $query = Worker::find();
+        $query = Worker::find()->where(['company_id' => Yii::$app->session->get('company')])->orderBy('id DESC');
 
         // add conditions that should always apply here
 
@@ -65,7 +65,6 @@ class WorkerSearch extends Worker
             'PESEL' => $this->PESEL,
             'NIP' => $this->NIP,
             'typ_contract' => $this->typ_contract,
-            'company_id' => $this->company_id,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\WorkerSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Workers';
+$this->title = 'Lista pracowników';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="worker-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Worker', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Utwórz pracownika', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,25 +24,25 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn','header' =>('L.p.')],
 
-            'id',
-            'konfigurator_id',
+         //   'id',
+         // 'konfigurator_id',
             'num_kadrow',
             'name',
             'name2',
-            // 'surname',
-            // 'date_birthday',
-            // 'email:email',
-            // 'PESEL',
-            // 'NIP',
-            // 'phone_number',
-            // 'street',
-            // 'house_number',
-            // 'flat_number',
-            // 'zip_code',
-            // 'region',
-            // 'position',
-            // 'typ_contract',
-            // 'company_id',
+            'surname',
+        //    'date_birthday',
+        //    'email:email',
+        //    'PESEL',
+        //    'NIP',
+        //    'phone_number',
+        //    'street',
+        //    'house_number',
+        //    'flat_number',
+        //    'zip_code',
+        //    'region',
+        //    'position',
+        //    'typ_contract',
+
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
