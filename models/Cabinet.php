@@ -34,7 +34,7 @@ class Cabinet extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['department_id'], 'required'],
+            [['department_id', 'cabinet_name'], 'required'],
             [['department_id', 'company_id'], 'integer'],
             [['cabinet_name'], 'string', 'max' => 255],
             [['department_id'], 'exist', 'skipOnError' => true, 'targetClass' => Department::className(), 'targetAttribute' => ['department_id' => 'id']],

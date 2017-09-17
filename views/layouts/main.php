@@ -22,6 +22,12 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <style>
+        div.required label.control-label:after {
+            content: " *";
+            color: red;
+        }
+    </style>
 </head>
 <body style="background: whitesmoke">
 <?php $this->beginBody() ?>
