@@ -41,7 +41,7 @@ class ZbirpolSearch extends Zbirpol
      */
     public function search($params)
     {
-        $query = Zbirpol::find()->where(['company_id' => Yii::$app->session->get('company')])->orderBy('id DESC');
+        $query = Zbirpol::find()->where(['company_id' => Yii::$app->session->get('company')]);
 
         // add conditions that should always apply here
 

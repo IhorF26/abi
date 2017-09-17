@@ -41,7 +41,7 @@ class ProgramSearch extends Program
      */
     public function search($params)
     {
-        $query = Program::find()->where(['company_id' => Yii::$app->session->get('company')])->orderBy('id DESC');
+        $query = Program::find()->where(['company_id' => Yii::$app->session->get('company')]);
 
         // add conditions that should always apply here
 

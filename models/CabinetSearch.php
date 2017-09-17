@@ -42,7 +42,7 @@ class CabinetSearch extends Cabinet
      */
     public function search($params)
     {
-        $query = Cabinet::find()->where(['company_id' => Yii::$app->session->get('company')])->orderBy('id DESC');
+        $query = Cabinet::find()->where(['company_id' => Yii::$app->session->get('company')]);
 
         // add conditions that should always apply here
 

@@ -41,7 +41,7 @@ class ZbirSearch extends Zbir
      */
     public function search($params)
     {
-        $query = Zbir::find()->where(['company_id' => Yii::$app->session->get('company')])->orderBy('id DESC');
+        $query = Zbir::find()->where(['company_id' => Yii::$app->session->get('company')]);
 
         // add conditions that should always apply here
 

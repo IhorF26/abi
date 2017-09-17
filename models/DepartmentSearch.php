@@ -41,7 +41,7 @@ class DepartmentSearch extends Department
      */
     public function search($params)
     {
-        $query = Department::find()->where(['company_id' => Yii::$app->session->get('company')])->orderBy('id DESC');
+        $query = Department::find()->where(['company_id' => Yii::$app->session->get('company')]);
 
         // add conditions that should always apply here
 

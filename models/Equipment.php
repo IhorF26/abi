@@ -48,7 +48,7 @@ class Equipment extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'L.p.',
+            'id' => '',
             'cabinet_id' => 'Pokój',
             'name' => 'Nazwa urządzenia',
             'description' => 'Opis',
