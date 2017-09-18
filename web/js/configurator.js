@@ -18,7 +18,6 @@ $('#selecteddepartment').on('change', function (e) {
 
 
            $('#selectedzbir >option').remove();
-
            var mynewselect= $('#selectedzbir');
            var defaultSelected = false;
            var nowSelected     = false;
@@ -41,12 +40,53 @@ $('#selecteddepartment').on('change', function (e) {
 		 else
            {
                content = respond.error;
-               content+='<a class="btn btn-success" href="/zbir/create">Utwórz</a>';
+               content+='<br><a class="btn btn-success" href="/zbir/create">Utwórz</a>';
                $("#zbir").fadeTo(1000,1);
                $('#no_zbir').html(content);
                $("#no_zbir").fadeTo(1000,1);
 
            }
+//------ cabinets
+           $('#selectedcabinet >option').remove();
+           var mynewselect= $('#selectedcabinet');
+           var defaultSelected = false;
+           var nowSelected     = false;
+           mynewselect.append( new Option('Select Cabinet',0,defaultSelected,nowSelected) );
+
+           if( typeof respond.error === 'undefined' ){
+               cabinets = respond.cabinets;
+               if (cabinets.length>0){
+                   console.log(cabinets.length);
+                   for (var i = 0; i < cabinets.length; i++) {
+                       id = cabinets[i].id;
+                       name = cabinets[i].cabinet_name;
+                       mynewselect.append( new Option(name,id) );
+                   }
+               }
+           }
+//------ end cabinets
+
+//------ programs
+           $('#selectedprogram >option').remove();
+           var mynewselect= $('#selectedprogram');
+           var defaultSelected = false;
+           var nowSelected     = false;
+           mynewselect.append( new Option('Select Program',0,defaultSelected,nowSelected) );
+
+           if( typeof respond.error === 'undefined' ){
+               programs = respond.programs;
+               if (programs.length>0){
+                   console.log('programs='+programs.length);
+                   for (var i = 0; i < programs.length; i++) {
+                       id = programs[i].id;
+                       name = programs[i].name;
+                       mynewselect.append( new Option(name,id) );
+                   }
+               }
+           }
+//------ end programs
+
+
 		}
 	});
   });
@@ -87,7 +127,7 @@ $('#selecteddepartment').on('change', function (e) {
                                  checked='';
                              }
 					console.log(content);
-                             content+='<input type="checkbox"'+ checked+' value="'+id+'" name="checkboxes_zbir_fields" id="zbirfield'+id+'" /> '+name+'</br>';
+                             content+='<input type="checkbox"'+ checked+' value="'+id+'" name="checkboxes_zbir_fields[]" id="zbirfield'+id+'" /> '+name+'</br>';
                          }
                          $("#other_fields").fadeTo(1000,1);
                      }
@@ -106,6 +146,41 @@ $('#selecteddepartment').on('change', function (e) {
      });
 //----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
+     $('#selectedcabinet').on('change', function (e) {
+         var cabinet_id = $('option:selected', this).val();
+         console.log('cabinet_id='+cabinet_id);
+
+         $.ajax({
+             url: '/site/getcomputersfromcabinet',
+             type: 'post',
+             dataType: 'json',
+             data: {
+                 cabinet_id: cabinet_id,
+             },
+             success: function (respond) {
+                 $('#selectedcomputer >option').remove();
+                 var mynewselect= $('#selectedcomputer');
+                 var defaultSelected = false;
+                 var nowSelected     = false;
+                 mynewselect.append( new Option('Select Computer',0,defaultSelected,nowSelected) );
+
+                 if( typeof respond.error === 'undefined' ){
+                     computers = respond.computers;
+                     if (computers.length>0) {
+                         for (var i = 0; i < computers.length; i++) {
+                             id = computers[i].id;
+                             name = computers[i].name;
+                             mynewselect.append(new Option(name, id));
+                         }
+                       }
+                     }
+                 }
+
+         });
+     });
+//----------------------------------------------------------------------
 
 
  });

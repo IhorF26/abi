@@ -2,7 +2,10 @@
 
 namespace app\controllers;
 
+use app\models\Cabinet;
 use app\models\Department;
+use app\models\Equipment;
+use app\models\Program;
 use app\models\Zbir;
 use app\models\Zbirpol;
 use Yii;
@@ -245,12 +248,17 @@ class SiteController extends Controller
 
             $department_id = (int)(json_decode($_POST['department_id'], true));
             if (Department::findOne($department_id)){
+
                 $zbores = Zbir::find()->where(['department_id' => $department_id])->all();
+                $cabinets = Cabinet::find()->where(['department_id' => $department_id])->all();
+                $programs = Program::find()->where(['department_id' => $department_id])->all();
 
                 if ($zbores){
                     \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
                     return [
                         'zbores' => $zbores,
+                        'cabinets' => $cabinets,
+                        'programs' => $programs
                     ];
                 }
                 else {
@@ -285,6 +293,29 @@ class SiteController extends Controller
             }
         }
     }
+
+    public function actionGetcomputersfromcabinet()
+    {
+        if (Yii::$app->request->isAjax && Yii::$app->user) {
+
+            $cabinet_id = (int)(json_decode($_POST['cabinet_id'], true));
+            if (Cabinet::findOne($cabinet_id)) {
+                $computers = Equipment::find()->where(['cabinet_id' => $cabinet_id])->all();
+                if ($computers) {
+                    \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                    return [
+                        'computers' => $computers,
+                    ];
+                } else {
+                    \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                    return [
+                        'error' => 'Cannot get computers or empty'
+                    ];
+                }
+            }
+        }
+    }
+
 
 
     }

@@ -9,6 +9,8 @@ $this->registerJsFile('/js/configurator.js');
 
 $this->title = 'Configurator';
 $this->params['breadcrumbs'][] = $this->title;
+
+// print_r ($_POST);
 ?>
 <div class="site-configurator">
 
@@ -45,13 +47,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <div id="other_fields" style="display: none;">
                     <?php echo '<h4> Please select cabinet</h4>';
-                    echo Html::dropDownList('cabinet', 'null', \app\models\Company::getCabinetList(Yii::$app->session->get('company')), $options = ['id' => 'selectedcabinet']) ?>
+                    echo Html::dropDownList('cabinet', 'null', ['0'=>'Select cabinet'], $options = ['id' => 'selectedcabinet']) ?>
 
                     <?php echo '<h4> Please select computer</h4>';
-                    echo Html::dropDownList('computer', 'null', \app\models\Company::getEquipmentList(Yii::$app->session->get('company')), $options = ['id' => 'selectedcomputer']) ?>
+                    echo Html::dropDownList('computer', 'null', ['0'=>'Select computer'], $options = ['id' => 'selectedcomputer']) ?>
 
                     <?php echo '<h4> Please select program</h4>';
-                    echo Html::dropDownList('program', 'null', \app\models\Company::getProgramList(Yii::$app->session->get('company')), $options = ['id' => 'selectedprogram']) ?>
+                    echo Html::dropDownList('program', 'null', ['0'=>'Select program'], $options = ['id' => 'selectedprogram']) ?>
 
                     <div class="form-group"><br>
                         <?php // = Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
