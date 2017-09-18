@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="company-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::a('<i class="fa fa-reply" aria-hidden="true"></i> Wróć do lista', ['index'], ['class' => 'btn btn-success']) ?>           <?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('Aktualizacja', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>

@@ -15,21 +15,11 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <div class="form-group" style="float: right; border: 1px solid; border-radius: 7px; padding: 8px; border-color: #adadad #c4e3f3;">
+        <?= $form->field($model, 'name')->textInput(['style' => 'width: 250px; float: right;']) ?>
 
-    <?= $form->field($model, 'name') ?>
 
-    <?= $form->field($model, 'nip') ?>
-
-    <?= $form->field($model, 'reg') ?>
-
-    <?= $form->field($model, 'status') ?>
-
-    <?php // echo $form->field($model, 'department') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton('<i class="fa fa-search" aria-hidden="true"></i> Szukaj', ['class' => 'btn btn-primary', 'style' => 'float: right;']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

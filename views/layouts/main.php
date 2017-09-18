@@ -22,6 +22,12 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <style>
+        div.required label.control-label:after {
+            content: " *";
+            color: red;
+        }
+    </style>
 </head>
 <body style="background: whitesmoke">
 <?php $this->beginBody() ?>
@@ -69,7 +75,7 @@ AppAsset::register($this);
                 $menuItems[] = '<li>'
                     . Html::beginForm(['/site/logout'], 'post')
                     . Html::submitButton(
-                         'Wyloguj'.' (' . Html::encode(Yii::$app->user->identity->username) . ')',
+                         '<i class="fa fa-sign-out" aria-hidden="true"></i> Wyloguj'.' (' . Html::encode(Yii::$app->user->identity->username) . ')',
                         ['class' => 'btn btn-link']
                     )
                     . Html::endForm()
