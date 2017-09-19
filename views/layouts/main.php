@@ -159,8 +159,7 @@ AppAsset::register($this);
 <footer class="footer" style="background: snow">
     <div class="container">
         <p class="pull-left">&copy; Asystent ABI <?= date('Y') ?></p>
-
-        <p class="pull-right">Powered by Ternopil-Company</p>
+        <p class="pull-right">Probajt Sp.z.o.o. &nbsp;&nbsp;&nbsp; ul. Mickiewicza 13/1 &nbsp;&nbsp;&nbsp; 58-500 Jelenia Góra &nbsp;&nbsp;&nbsp; www.probajt.eu</p>
     </div>
 </footer>
 
